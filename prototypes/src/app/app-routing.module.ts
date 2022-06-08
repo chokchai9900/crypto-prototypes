@@ -94,6 +94,14 @@ const routes: Routes = [
     path: 'option-dialog-no-submit',
     loadChildren: () => import('./option-dialog-no-submit/option-dialog-no-submit.module').then( m => m.OptionDialogNoSubmitPageModule)
   },
+  {
+    path: 'consent-i',
+    loadChildren: () => import('./consent-i/consent-i.module').then( m => m.ConsentIPageModule)
+  },
+  {
+    path: 'consent-j',
+    loadChildren: () => import('./consent-j/consent-j.module').then( m => m.ConsentJPageModule)
+  },
 
 
 ];
