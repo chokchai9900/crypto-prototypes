@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/quotes */
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,6 +11,7 @@ export class HomePage implements OnInit {
   public data: any[] = [];
 
   public templates: ListInfo[] = [
+    new ListInfo("Crypto Prototype", "/crypto-main"),
     new ListInfo("ตระกร้าสินค้า (แก้ไข)", "/cart-edit-template"),
     new ListInfo("ตระกร้าสินค้า (จ่ายเงิน)", "/cart-checkout-template"),
     new ListInfo("ตระกร้าสินค้า (ผลลัพธ์จ่ายเงิน) dialog", "/cart-dialog-template"),

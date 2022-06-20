@@ -1,0 +1,36 @@
+<ion-content mode="ios">
+
+  <ion-card>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list class="ion-margin-bottom" lines="full" *ngFor="let info of data">
+    <ion-list-header class="ion-padding">
+      <ion-label>{{ info.title }}</ion-label>
+    </ion-list-header>
+
+     <ng-container *ngFor="let item of info.data">
+      <a *ngIf="item.link" target="_blank" [routerLink]="item.link">
+        <ion-item color="tertiary" button [ngClass]="{'indent': item.isSub}">
+          <ion-label>
+            {{ item.title }}
+            <p *ngIf="item.required">
+              <ion-text color="medium">{{ item.required }}</ion-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </a>
+      <ion-item *ngIf="!item.link" color="light" lines="none" [ngClass]="{'indent': item.isSub}">
+        <ion-label>
+          {{ item.title }}
+          <p *ngIf="item.required">
+            <ion-text color="medium">{{ item.required }}</ion-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+    
+  </ion-list>
+
+  </ion-content>

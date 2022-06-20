@@ -94,6 +94,26 @@ const routes: Routes = [
     path: 'option-dialog-no-submit',
     loadChildren: () => import('./option-dialog-no-submit/option-dialog-no-submit.module').then( m => m.OptionDialogNoSubmitPageModule)
   },
+  {
+    path: 'crypto-main',
+    loadChildren: () => import('./crypto-main/crypto-main.module').then( m => m.CryptoMainPageModule)
+  },
+  {
+    path: 'crypto-wallet',
+    loadChildren: () => import('./crypto-wallet/crypto-wallet.module').then( m => m.CryptoWalletPageModule)
+  },
+  {
+    path: 'crypto-deposit',
+    loadChildren: () => import('./crypto-deposit/crypto-deposit.module').then( m => m.CryptoDepositPageModule)
+  },
+  {
+    path: 'crypto-withdraw-ex',
+    loadChildren: () => import('./crypto-withdraw-ex/crypto-withdraw-ex.module').then( m => m.CryptoWithdrawExPageModule)
+  },
+  {
+    path: 'crypto-withdraw-in',
+    loadChildren: () => import('./crypto-withdraw-in/crypto-withdraw-in.module').then( m => m.CryptoWithdrawInPageModule)
+  },
 
 
 ];
