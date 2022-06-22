@@ -126,6 +126,10 @@ const routes: Routes = [
     path: 'crypto-withdraw-mana-confirm',
     loadChildren: () => import('./crypto-withdraw-mana-confirm/crypto-withdraw-mana-confirm.module').then( m => m.CryptoWithdrawManaConfirmPageModule)
   },
+  {
+    path: 'crypto-withdraw-mana-success',
+    loadChildren: () => import('./crypto-withdraw-mana-success/crypto-withdraw-mana-success.module').then( m => m.CryptoWithdrawManaSuccessPageModule)
+  },
 
 
 ];
