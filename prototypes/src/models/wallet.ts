@@ -1,10 +1,21 @@
-export interface wallet {
-    icon: string;
-    name: string;
-    currency: string;
-    exhangeRate:number;
-    address:string;
-    walletnumber:string;
-    ownerName:string;
-    walletType:string;
+export interface Wallet {
+     icon: string;
+     name: string;
+     currency: string;
+     exhangeRate: number;
+     id: string;
+     ownerName: string;
+     walletType: string;
 }
+
+export const WalletType = {
+     CRYPTOX: "CRYPTOX",
+     CRYPTO: "CRYPTO",
+     FIAT: "FIAT"
+};
+
+export const Flow = {
+     WITHDRAW_ADRESS: "CRYPTOX",
+     WITHDRAW_MANA: "CRYPTO",
+     WITHDRAW_CRYPTO: "FIAT"
+};

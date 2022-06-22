@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { wallet } from 'src/models/wallet';
+import { Wallet } from 'src/models/wallet';
 
 @Component({
   selector: 'app-crypto-withdraw-mana-list',

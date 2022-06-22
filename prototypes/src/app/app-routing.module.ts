@@ -133,6 +133,14 @@ const routes: Routes = [
     path: 'crypto-withdraw-mana-success',
     loadChildren: () => import('./crypto-withdraw-mana-success/crypto-withdraw-mana-success.module').then( m => m.CryptoWithdrawManaSuccessPageModule)
   },
+  {
+    path: 'crypto-transfer-list',
+    loadChildren: () => import('./crypto-transfer-list/crypto-transfer-list.module').then( m => m.CryptoTransferListPageModule)
+  },
+  {
+    path: 'crypto-transfer-edit',
+    loadChildren: () => import('./crypto-transfer-edit/crypto-transfer-edit.module').then( m => m.CryptoTransferEditPageModule)
+  },
 
 
 ];
