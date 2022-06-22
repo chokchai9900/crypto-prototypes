@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crypto-withdraw-mana-confirm',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CryptoWithdrawManaConfirmPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  public goNext()
+  {
+    this.router.navigate(['/crypto-withdraw-mana-success']); 
+  }
 }
