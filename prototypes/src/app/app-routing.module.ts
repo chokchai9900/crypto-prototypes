@@ -114,6 +114,10 @@ const routes: Routes = [
     path: 'crypto-withdraw-in',
     loadChildren: () => import('./crypto-withdraw-in/crypto-withdraw-in.module').then( m => m.CryptoWithdrawInPageModule)
   },
+  {
+    path: 'crypto-wallet-detail',
+    loadChildren: () => import('./crypto-wallet-detail/crypto-wallet-detail.module').then( m => m.CryptoWalletDetailPageModule)
+  },
 
 
 ];
