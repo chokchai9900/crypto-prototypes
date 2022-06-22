@@ -114,6 +114,18 @@ const routes: Routes = [
     path: 'crypto-withdraw-in',
     loadChildren: () => import('./crypto-withdraw-in/crypto-withdraw-in.module').then( m => m.CryptoWithdrawInPageModule)
   },
+  {
+    path: 'crypto-withdraw-mana-list',
+    loadChildren: () => import('./crypto-withdraw-mana-list/crypto-withdraw-mana-list.module').then( m => m.CryptoWithdrawManaListPageModule)
+  },
+  {
+    path: 'crypto-withdraw-mana',
+    loadChildren: () => import('./crypto-withdraw-mana/crypto-withdraw-mana.module').then( m => m.CryptoWithdrawManaPageModule)
+  },
+  {
+    path: 'crypto-withdraw-mana-confirm',
+    loadChildren: () => import('./crypto-withdraw-mana-confirm/crypto-withdraw-mana-confirm.module').then( m => m.CryptoWithdrawManaConfirmPageModule)
+  },
 
 
 ];
