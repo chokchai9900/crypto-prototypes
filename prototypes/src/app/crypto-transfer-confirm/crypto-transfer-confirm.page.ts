@@ -3,16 +3,16 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Wallet } from 'src/models/wallet';
 
 @Component({
-  selector: 'app-crypto-transfer-edit',
-  templateUrl: './crypto-transfer-edit.page.html',
-  styleUrls: ['./crypto-transfer-edit.page.scss'],
+  selector: 'app-crypto-transfer-confirm',
+  templateUrl: './crypto-transfer-confirm.page.html',
+  styleUrls: ['./crypto-transfer-confirm.page.scss'],
 })
-export class CryptoTransferEditPage implements OnInit {
+export class CryptoTransferConfirmPage implements OnInit {
 
   public sender: Wallet;
   public reciever: Wallet;
   public flow: string;
-
+  
   constructor(private route: ActivatedRoute, private router: Router) {
     if (this.route.queryParams) {
       this.route.queryParams.subscribe(params => {
@@ -28,7 +28,7 @@ export class CryptoTransferEditPage implements OnInit {
 
   public goNext() {
     let param: NavigationExtras = { queryParams: { flow: this.flow, sender: JSON.stringify(this.sender), reciever: JSON.stringify(this.reciever) } };
-    this.router.navigate(['/crypto-transfer-confirm'], param);
+    this.router.navigate(['/crypto-transfer-success'], param);
   }
 
 }

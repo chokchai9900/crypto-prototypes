@@ -10,11 +10,11 @@ import { Flow, Wallet, WalletType } from 'src/models/Wallet';
 export class CryptoTransferListPage implements OnInit {
 
   public wallets: Wallet[] = [
-    { icon: "assets/imgs/promtpayicon.png", name: "บัญชีของฉัน", currency: "THB", exhangeRate: 1, id: "0944566698", ownerName: "อานน บางสาน", walletType: WalletType.FIAT },
-    { icon: "assets/imgs/krungthai.png", name: "เงินเดือน", currency: "THB", exhangeRate: 1, id: "4055236478", ownerName: "อานน บางสาน", walletType: WalletType.FIAT }
+    { icon: "assets/imgs/promtpayicon.png", name: "บัญชีของฉัน", currency: "THB", exhangeRate: 1, id: "0944566698", ownerName: "อานน บางสาน", walletType: WalletType.FIAT, amount: 3000 },
+    { icon: "assets/imgs/krungthai.png", name: "เงินเดือน", currency: "THB", exhangeRate: 1, id: "4055236478", ownerName: "อานน บางสาน", walletType: WalletType.FIAT, amount: 2000 }
   ];
 
-  private fixWallet: Wallet = { icon: "assets/imgs/2844386_crypto_eth_ethcoin_etherium_icon.png", name: "ANON_ETH", currency: "ETH", exhangeRate: 60000, id: "03366988744", ownerName: "อานน บางสาน", walletType: WalletType.CRYPTOX }
+  private fixWallet: Wallet = { icon: "assets/imgs/2844386_crypto_eth_ethcoin_etherium_icon.png", name: "ANON_ETH", currency: "ETH", exhangeRate: 60000, id: "03366988744", ownerName: "อานน บางสาน", walletType: WalletType.CRYPTOX, amount: 100 }
 
   private flow = Flow.WITHDRAW_MANA;
 
@@ -22,12 +22,10 @@ export class CryptoTransferListPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log(JSON.stringify(this.wallets));
-
   }
 
   public goNext(account: any) {
-    let param: NavigationExtras = { queryParams: { flow: this.flow, sender: JSON.stringify(this.fixWallet), reciewer: JSON.stringify(account) } };
+    let param: NavigationExtras = { queryParams: { flow: this.flow, sender: JSON.stringify(this.fixWallet), reciever: JSON.stringify(account) } };
     this.router.navigate(['/crypto-transfer-edit'], param);
   }
 }

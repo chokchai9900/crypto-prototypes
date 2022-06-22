@@ -141,6 +141,14 @@ const routes: Routes = [
     path: 'crypto-transfer-edit',
     loadChildren: () => import('./crypto-transfer-edit/crypto-transfer-edit.module').then( m => m.CryptoTransferEditPageModule)
   },
+  {
+    path: 'crypto-transfer-confirm',
+    loadChildren: () => import('./crypto-transfer-confirm/crypto-transfer-confirm.module').then( m => m.CryptoTransferConfirmPageModule)
+  },
+  {
+    path: 'crypto-transfer-success',
+    loadChildren: () => import('./crypto-transfer-success/crypto-transfer-success.module').then( m => m.CryptoTransferSuccessPageModule)
+  },
 
 
 ];

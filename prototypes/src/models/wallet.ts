@@ -6,6 +6,7 @@ export interface Wallet {
      id: string;
      ownerName: string;
      walletType: string;
+     amount:number;
 }
 
 export const WalletType = {
