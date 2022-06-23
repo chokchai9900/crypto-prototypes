@@ -154,7 +154,11 @@ const routes: Routes = [
   {
     path: 'crypto-select-method',
     loadChildren: () => import('./crypto-select-method/crypto-select-method.module').then( m => m.CryptoSelectMethodPageModule)
+  },  {
+    path: 'underconstruction',
+    loadChildren: () => import('./underconstruction/underconstruction.module').then( m => m.UnderconstructionPageModule)
   },
+
 
 
 
