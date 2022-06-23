@@ -142,6 +142,14 @@ const routes: Routes = [
     path: 'crypto-withdraw-address',
     loadChildren: () => import('./crypto-withdraw-address/crypto-withdraw-address.module').then( m => m.CryptoWithdrawAddressPageModule)
   },
+  {
+    path: 'crypto-deposit-qr-complete',
+    loadChildren: () => import('./crypto-deposit-qr-complete/crypto-deposit-qr-complete.module').then( m => m.CryptoDepositQrCompletePageModule)
+  },
+  {
+    path: 'crypto-deposit-qr-edit',
+    loadChildren: () => import('./crypto-deposit-qr-edit/crypto-deposit-qr-edit.module').then( m => m.CryptoDepositQrEditPageModule)
+  },
 
 
 
