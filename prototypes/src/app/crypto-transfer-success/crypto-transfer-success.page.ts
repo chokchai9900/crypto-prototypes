@@ -14,6 +14,7 @@ export class CryptoTransferSuccessPage implements OnInit {
   public sender: Wallet;
   public reciever: Wallet;
   public flow: string;
+  public transaction:any;
 
   public lineText: any;
   public now: any = new Date().toISOString()
@@ -23,6 +24,7 @@ export class CryptoTransferSuccessPage implements OnInit {
       this.route.queryParams.subscribe(params => {
         this.sender = JSON.parse(params["sender"]);
         this.reciever = JSON.parse(params["reciever"]);
+        this.transaction = JSON.parse(params["transaction"]);
         this.flow = params["flow"];
 
         this.lineText = GetLineText(this.reciever.walletType);
@@ -32,6 +34,11 @@ export class CryptoTransferSuccessPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  public goHome()
+  {
+    this.router.navigate(['/']);
   }
 
 }

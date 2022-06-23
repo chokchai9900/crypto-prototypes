@@ -34,4 +34,8 @@ export class CryptoTransactionWaitingResultPage implements OnInit {
   ngOnInit() {
   }
 
+  public goHome()
+  {
+    this.router.navigate(['/']);
+  }
 }

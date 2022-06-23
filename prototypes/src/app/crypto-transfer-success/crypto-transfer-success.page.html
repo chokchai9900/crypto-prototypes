@@ -41,15 +41,15 @@
         <ion-label color="danger" class="ion-padding-bottom">
           <h2><b>
               <ion-icon color="primary" name="checkmark-circle-sharp"></ion-icon>
-              1.001
-              <small>ETH</small>
+              {{transaction.converted}}
+              <small>{{reciever.currency}}</small>
             </b>
           </h2>
           <ion-text color="medium">
             <h3>
               <ion-icon></ion-icon>
-              60,600
-              <small>THB</small>
+              {{transaction.amount+transaction.fee}}
+              <small>{{sender.currency}}</small>
             </h3>
           </ion-text>
         </ion-label>
@@ -123,6 +123,6 @@
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <ion-button expand="full">ปิด
+  <ion-button expand="full" (click)="goHome()">ปิด
   </ion-button>
 </ion-footer>

@@ -19,12 +19,14 @@ export class CryptoTransferEditPage implements OnInit {
   public lineText: any;
 
   public exhangeLate: number;
-  public converted:number;
+  public converted: number = 0;
+  public fee: number = 0.01;
 
   constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
     this.fg = this.fb.group({
       'amount': [null],
-      'convert': [null]
+      'converted': [null],
+      'fee': [null]
     });
 
     if (this.route.queryParams) {
@@ -44,14 +46,15 @@ export class CryptoTransferEditPage implements OnInit {
   ngOnInit() {
   }
 
-  public onChangeAmount(event)
-  {
+  public onChangeAmount(event) {
     var amount = event.target.value;
-    this.converted = amount*this.exhangeLate;
+    this.converted = amount * this.exhangeLate;
   }
-  
+
   public goNext() {
-    let param: NavigationExtras = { queryParams: { flow: this.flow, sender: JSON.stringify(this.sender), reciever: JSON.stringify(this.reciever) } };
+    this.fg.get("converted").setValue(this.converted);
+    this.fg.get("fee").setValue(this.fee);
+    let param: NavigationExtras = { queryParams: { flow: this.flow, sender: JSON.stringify(this.sender), reciever: JSON.stringify(this.reciever), transaction: JSON.stringify(this.fg.value) } };
     this.router.navigate(['/crypto-transfer-confirm'], param);
   }
 

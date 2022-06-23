@@ -34,7 +34,7 @@
               </ion-col>
               <ion-col class="ion-no-padding ion-text-right">
                 <ion-label>
-                  <h3>1.00 <small>{{sender.currency}}</small></h3>
+                  <h3>{{transaction.amount}} <small>{{sender.currency}}</small></h3>
                 </ion-label>
               </ion-col>
             </ion-row>
@@ -46,7 +46,7 @@
               </ion-col>
               <ion-col class="ion-no-padding ion-text-right">
                 <ion-label>
-                  <h3>0.004 <small>{{sender.currency}}</small></h3>
+                  <h3>{{transaction.fee}} <small>{{sender.currency}}</small></h3>
                 </ion-label>
               </ion-col>
             </ion-row>
@@ -58,7 +58,7 @@
               </ion-col>
               <ion-col class="ion-no-padding ion-text-right">
                 <ion-label color="danger">
-                  <h3><b>1.004 <small>{{sender.currency}}</small></b></h3>
+                  <h3><b>{{transaction.amount+ transaction.fee}} <small>{{sender.currency}}</small></b></h3>
                 </ion-label>
               </ion-col>
             </ion-row>
@@ -70,7 +70,7 @@
               </ion-col>
               <ion-col class="ion-no-padding ion-text-right">
                 <ion-label color="medium">
-                  <h3>*รวมทั้งหมด ({{reciever.currency}})<b> 60,600 <small>{{reciever.currency}}</small></b></h3>
+                  <h3>*รวมทั้งหมด ({{reciever.currency}})<b> {{transaction.converted}} <small>{{reciever.currency}}</small></b></h3>
                 </ion-label>
               </ion-col>
             </ion-row>
