@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <form>
+  <form [formGroup]="fg">
     <ion-item color="tertiary" class="ion-padding-vertical" lines="none">
       <ion-avatar slot="start" class="avatar-m">
         <img [src]="reciever.icon">
@@ -14,25 +14,31 @@
         <h2><b>{{reciever.name}}</b></h2>
         <ion-text color="medium">
           <h3>
-            {{reciever.idOrAddress}}
+            {{address}}
           </h3>
         </ion-text>
       </ion-label>
     </ion-item>
-    <ion-item lines="full" color="tertiary">
-      <ion-label position="stacked">Network</ion-label>
-      <ion-input type="text"></ion-input>
+
+    <ion-item color="tertiary" lines="none">
+      <ion-label>
+        <h2>Network</h2>
+      </ion-label>
     </ion-item>
-    <ion-item lines="full" color="tertiary">
-      <ion-label position="stacked">Memo</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item> 
+    <ion-item color="tertiary">
+      <ion-select class="ion-no-padding ion-padding-end ion-select-full" okText="ตกลง" cancelText="ยกเลิก"
+        interface="action-sheet" placeholder="กรุณาระบุ Network" formControlName="networkSelected" (ionChange)="onSelectNetwork($event)">
+        <ion-select-option value="Etherium Network">Etherium Network</ion-select-option>
+        <ion-select-option value="Binance Smart chain">Binance Smart chain</ion-select-option>
+      </ion-select>
+    </ion-item>
+
   </form>
 </ion-content>
 
 <ion-footer class="ion-no-border">
   <form >
-  <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" (click)="goNext()">ตกลง
+  <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit" (click)="goNext()">ตกลง
   </ion-button>
   </form>
 </ion-footer>

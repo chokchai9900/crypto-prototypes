@@ -14,6 +14,8 @@ export class CryptoDepositQrCompletePage implements OnInit {
   public sender: Wallet;
   public reciever: Wallet;
   public flow: string;
+  public networkSelected: string;
+  public address: string;
 
   public lineText: any;
   
@@ -25,6 +27,9 @@ export class CryptoDepositQrCompletePage implements OnInit {
 
         this.lineText = GetLineText(this.reciever.walletType);
         this.title = GetTitle(this.flow);
+        this.networkSelected = params["network"];
+        this.address = params["address"];
+        
       });
     }
   }
