@@ -17,7 +17,7 @@ export class CryptoTransferListPage implements OnInit {
 
   private fixWallet: Wallet = { icon: "assets/imgs/2844386_crypto_eth_ethcoin_etherium_icon.png", name: "ANON_ETH", currency: "ETH", exhangeRate: 60000, idOrAddress: "03366988744", ownerOrNetwork: "อานน บางสาน", walletType: WalletType.CRYPTOX, amount: 100 }
 
-  private flow = Flow.DEPOSITE_CRYPTO;
+  private flow = Flow.DEPOSITE_QR;
 
   constructor(private router: Router) {
     this.title = GetTitle(this.flow);
@@ -28,6 +28,8 @@ export class CryptoTransferListPage implements OnInit {
 
   public goNext(account: any) {
     let param: NavigationExtras = { queryParams: { flow: this.flow, sender: JSON.stringify(this.fixWallet), reciever: JSON.stringify(account) } };
-    this.router.navigate(['/crypto-transfer-edit'], param);
+    if(this.flow == Flow.DEPOSITE_QR)this.router.navigate(['/crypto-deposit-qr-edit'], param);
+    else if(this.flow == Flow.WITHDRAW_ADRESS) this.router.navigate(['/crypto-withdraw-address'], param);
+    else this.router.navigate(['/crypto-transfer-edit'], param);
   }
 }

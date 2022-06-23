@@ -5,5 +5,35 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card color="tertiary">
+    <ion-card-content>
+      <div class="ion-text-center">
+        <img src="assets/imgs/qrcode.png" />
+      </div>
+      <br>
+      <ion-label color="dark">
+        <h1 class="ion-margin-top ion-text-center"><b>{{reciever.name}}</b></h1>
+      </ion-label>
+      <br>
+      <div class="text-indent">Address
+        <br>
+        <br>
+        <div class="text-indent"><b>{{reciever.idOrAddress}}</b></div>
+      </div>
+      <br>
+      <br>
+      <div class="text-indent">Network
+        <br>
+        <br>
+        <div class="text-indent"><b>{{reciever.ownerOrNetwork}}</b></div>
+      </div>
+      <br>
+      <br>
+      <div class="text-indent">Memo
+        <br>
+        <br>
+        <div class="text-indent"><b>ตรงนี้คือ memo</b></div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
