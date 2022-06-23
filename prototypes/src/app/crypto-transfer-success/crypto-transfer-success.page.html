@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>รายละเอียดถอนเงิน</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -86,12 +86,12 @@
         <ion-grid class="ion-no-padding">
 
           <ion-label for="customInputAmount">
-            <h2><b>หมายเลขพร้อมเพย์</b>&nbsp;<ion-text color="medium">{{reciever.id}}</ion-text>
+            <h2><b>{{lineText.line1}}</b>&nbsp;<ion-text color="medium">{{reciever.idOrAddress}}</ion-text>
             </h2>
           </ion-label>
 
           <ion-label for="customInputAmount">
-            <h2><b>ชื่อบัญชี</b>&nbsp;<ion-text color="medium">{{reciever.ownerName}}</ion-text>
+            <h2><b>{{lineText.line2}}</b>&nbsp;<ion-text color="medium">{{reciever.ownerOrNetwork}}</ion-text>
             </h2>
           </ion-label>
 

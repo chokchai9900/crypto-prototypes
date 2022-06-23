@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Wallet } from 'src/models/wallet';
+import { GetLineText, GetTitle, Wallet } from 'src/models/wallet';
 
 @Component({
   selector: 'app-crypto-transfer-edit',
@@ -9,9 +9,13 @@ import { Wallet } from 'src/models/wallet';
 })
 export class CryptoTransferEditPage implements OnInit {
 
+  public title: string;
+
   public sender: Wallet;
   public reciever: Wallet;
   public flow: string;
+
+  public lineText: any;
 
   constructor(private route: ActivatedRoute, private router: Router) {
     if (this.route.queryParams) {
@@ -19,6 +23,9 @@ export class CryptoTransferEditPage implements OnInit {
         this.sender = JSON.parse(params["sender"]);
         this.reciever = JSON.parse(params["reciever"]);
         this.flow = params["flow"];
+
+        this.lineText = GetLineText(this.reciever.walletType);
+        this.title = GetTitle(this.flow);
       });
     }
   }

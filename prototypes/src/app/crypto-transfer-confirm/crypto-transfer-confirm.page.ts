@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Flow, Wallet } from 'src/models/wallet';
+import { Flow, GetLineText, GetTitle, Wallet } from 'src/models/wallet';
 
 @Component({
   selector: 'app-crypto-transfer-confirm',
@@ -9,16 +9,23 @@ import { Flow, Wallet } from 'src/models/wallet';
 })
 export class CryptoTransferConfirmPage implements OnInit {
 
+  public title: string;
+
   public sender: Wallet;
   public reciever: Wallet;
   public flow: string;
-  
+
+  public lineText: any;
+
   constructor(private route: ActivatedRoute, private router: Router) {
     if (this.route.queryParams) {
       this.route.queryParams.subscribe(params => {
         this.sender = JSON.parse(params["sender"]);
         this.reciever = JSON.parse(params["reciever"]);
         this.flow = params["flow"];
+
+        this.lineText = GetLineText(this.reciever.walletType);
+        this.title = GetTitle(this.flow);
       });
     }
   }
@@ -28,7 +35,7 @@ export class CryptoTransferConfirmPage implements OnInit {
 
   public goNext() {
     let param: NavigationExtras = { queryParams: { flow: this.flow, sender: JSON.stringify(this.sender), reciever: JSON.stringify(this.reciever) } };
-    if(this.flow == Flow.WITHDRAW_CRYPTO) this.router.navigate(['/crypto-transaction-waiting-result'], param);
+    if (this.flow == Flow.WITHDRAW_CRYPTO || this.flow == Flow.WITHDRAW_ADRESS) this.router.navigate(['/crypto-transaction-waiting-result'], param);
     else this.router.navigate(['/crypto-transfer-success'], param);
   }
 

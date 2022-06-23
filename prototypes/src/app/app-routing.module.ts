@@ -138,7 +138,11 @@ const routes: Routes = [
   {
     path: 'crypto-transaction-waiting-result',
     loadChildren: () => import('./crypto-transaction-waiting-result/crypto-transaction-waiting-result.module').then( m => m.CryptoTransactionWaitingResultPageModule)
+  },  {
+    path: 'crypto-withdraw-address',
+    loadChildren: () => import('./crypto-withdraw-address/crypto-withdraw-address.module').then( m => m.CryptoWithdrawAddressPageModule)
   },
+
 
 
 ];
