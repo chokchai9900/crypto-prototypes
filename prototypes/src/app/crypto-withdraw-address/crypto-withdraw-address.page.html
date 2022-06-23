@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <form>
+  <form [formGroup]="fg">
     <ion-item color="tertiary" class="ion-padding-vertical" lines="none">
       <ion-avatar slot="start" class="avatar-m">
         <img [src]="sender.icon">
@@ -19,22 +19,32 @@
     </ion-item>
     <ion-item lines="full" color="tertiary">
       <ion-label position="stacked">address ผู้รับ</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" formControlName="addess"></ion-input>
     </ion-item>
     <ion-item lines="full" color="tertiary">
       <ion-label position="stacked">nextwork</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-select class="ion-no-padding ion-padding-end ion-select-full" okText="ตกลง" cancelText="ยกเลิก"
+        interface="action-sheet" formControlName="network">
+        <ion-select-option value="BTC main network">BTC main network</ion-select-option>
+        <ion-select-option value="ETH main network">ETH main network</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item lines="full" color="tertiary">
       <ion-label position="stacked">จำนวน</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-input type="number" formControlName="amount"></ion-input>
+    </ion-item>
+    <ion-item lines="full" color="tertiary">
+
+      <ion-label slot="end" color="medium" class="ion-text-end">
+        <h3>+ ค่าธรรมเนียม 0.01 {{sender.currency}}</h3>
+      </ion-label>
     </ion-item>
   </form>
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <form >
-  <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" (click)="goNext()">ตกลง
-  </ion-button>
+  <form>
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" (click)="goNext()">ตกลง
+    </ion-button>
   </form>
 </ion-footer>
