@@ -39,7 +39,7 @@ export class CryptoTransferConfirmPage implements OnInit {
 
   public goNext() {
     let param: NavigationExtras = { queryParams: { flow: this.flow, sender: JSON.stringify(this.sender), reciever: JSON.stringify(this.reciever), transaction: JSON.stringify(this.transaction) } };
-    if (this.flow == Flow.WITHDRAW_CRYPTO || this.flow == Flow.WITHDRAW_ADRESS) this.router.navigate(['/crypto-transaction-waiting-result'], param);
+    if (this.flow == Flow.WITHDRAW_CRYPTO || this.flow == Flow.WITHDRAW_ADRESS|| this.flow == Flow.DEPOSITE_CRYPTO) this.router.navigate(['/crypto-transaction-waiting-result'], param);
     else this.router.navigate(['/crypto-transfer-success'], param);
   }
 
