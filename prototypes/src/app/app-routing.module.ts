@@ -150,6 +150,10 @@ const routes: Routes = [
     path: 'crypto-deposit-qr-edit',
     loadChildren: () => import('./crypto-deposit-qr-edit/crypto-deposit-qr-edit.module').then( m => m.CryptoDepositQrEditPageModule)
   },
+  {
+    path: 'crypto-select-method',
+    loadChildren: () => import('./crypto-select-method/crypto-select-method.module').then( m => m.CryptoSelectMethodPageModule)
+  },
 
 
 
