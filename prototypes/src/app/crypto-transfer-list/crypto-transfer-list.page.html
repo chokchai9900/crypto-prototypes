@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ถอนเงิน</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+
+  <ion-list lines="none">
+    <ion-list-header lines="none" mode="md">
+      <ion-label>เลือกบัญชีที่ผูกไว้</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let item of wallets" button class="ion-margin-bottom" color="tertiary" (click)="goNext(item)">
+      <ion-avatar slot="start">
+        <img [src]="item.icon" />
+      </ion-avatar>
+      <ion-label>
+        <b>{{item.name}}</b>
+        <ion-text color="medium">
+          <h3>
+            {{item.id}}
+          </h3>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+

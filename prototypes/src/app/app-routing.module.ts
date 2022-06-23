@@ -117,6 +117,37 @@ const routes: Routes = [
   {
     path: 'crypto-wallet-detail',
     loadChildren: () => import('./crypto-wallet-detail/crypto-wallet-detail.module').then( m => m.CryptoWalletDetailPageModule)
+  },  {
+    path: 'crypto-withdraw-mana-list',
+    loadChildren: () => import('./crypto-withdraw-mana-list/crypto-withdraw-mana-list.module').then( m => m.CryptoWithdrawManaListPageModule)
+  },
+  {
+    path: 'crypto-withdraw-mana',
+    loadChildren: () => import('./crypto-withdraw-mana/crypto-withdraw-mana.module').then( m => m.CryptoWithdrawManaPageModule)
+  },
+  {
+    path: 'crypto-withdraw-mana-confirm',
+    loadChildren: () => import('./crypto-withdraw-mana-confirm/crypto-withdraw-mana-confirm.module').then( m => m.CryptoWithdrawManaConfirmPageModule)
+  },
+  {
+    path: 'crypto-withdraw-mana-success',
+    loadChildren: () => import('./crypto-withdraw-mana-success/crypto-withdraw-mana-success.module').then( m => m.CryptoWithdrawManaSuccessPageModule)
+  },
+  {
+    path: 'crypto-transfer-list',
+    loadChildren: () => import('./crypto-transfer-list/crypto-transfer-list.module').then( m => m.CryptoTransferListPageModule)
+  },
+  {
+    path: 'crypto-transfer-edit',
+    loadChildren: () => import('./crypto-transfer-edit/crypto-transfer-edit.module').then( m => m.CryptoTransferEditPageModule)
+  },
+  {
+    path: 'crypto-transfer-confirm',
+    loadChildren: () => import('./crypto-transfer-confirm/crypto-transfer-confirm.module').then( m => m.CryptoTransferConfirmPageModule)
+  },
+  {
+    path: 'crypto-transfer-success',
+    loadChildren: () => import('./crypto-transfer-success/crypto-transfer-success.module').then( m => m.CryptoTransferSuccessPageModule)
   },
   {
     path: 'crypto-select-method',
