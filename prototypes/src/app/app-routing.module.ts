@@ -118,6 +118,10 @@ const routes: Routes = [
     path: 'crypto-wallet-detail',
     loadChildren: () => import('./crypto-wallet-detail/crypto-wallet-detail.module').then( m => m.CryptoWalletDetailPageModule)
   },
+  {
+    path: 'crypto-select-method',
+    loadChildren: () => import('./crypto-select-method/crypto-select-method.module').then( m => m.CryptoSelectMethodPageModule)
+  },
 
 
 ];
