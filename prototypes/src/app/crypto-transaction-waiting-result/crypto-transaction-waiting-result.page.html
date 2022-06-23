@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>รายละเอียดถอนเงิน</ion-title>
+    <ion-title>รอการทำงาน crypto</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,25 +12,25 @@
           <ion-row class="ion-text-center ion-align-items-center">
             <ion-col size="6" class="ion-text-center">
               <div class="content-center">
-                <img class="icon transaction-img" src="assets/imgs/2844386_crypto_eth_ethcoin_etherium_icon.png">
+                <img class="icon transaction-img" [src]="sender.icon">
               </div>
               <ion-icon class="right-arrow" name="chevron-forward-sharp"></ion-icon>
             </ion-col>
             <ion-col size="6" class="ion-text-center">
               <div class="content-center">
-                <img class="icon circle transaction-img" src="assets/imgs/promtpayicon.png">
+                <img class="icon circle transaction-img" [src]="reciever.icon">
               </div>
             </ion-col>
           </ion-row>
           <ion-row class="ion-text-center ion-align-items-center">
             <ion-col size="6" class="ion-text-center ion-no-padding">
               <ion-label class="ion-text-nowrap">
-                <h3><b> ANON_ETH</b></h3>
+                <h3><b> {{sender.name}}</b></h3>
               </ion-label>
             </ion-col>
             <ion-col size="6" class="ion-text-center ion-no-padding">
               <ion-label class="ion-text-nowrap">
-                <h3><b> บัญชีของฉัน</b></h3>
+                <h3><b> {{reciever.name}}</b></h3>
               </ion-label>
             </ion-col>
           </ion-row>
@@ -56,25 +56,14 @@
       </ion-item>
 
       <ion-item color="tertiary" class="ion-padding-vertical" lines="full">
-        <ion-avatar slot="start" class="avatar-m">
-          <img class="non-circle" src="assets/imgs/qrcode.png" />
-        </ion-avatar>
-        <ion-label>
-          <h2><b>รหัสอ้างอิง : TST</b></h2>
-          <ion-text color="medium">
-            <h3>วันที่ : 20/12/2022</h3>
-          </ion-text>
+        <ion-label class="ion-text-center">
+          <h2>
+            <ion-text>กำลังดำเนินการโอน crypto ไปยังปลายทาง</ion-text>
+          </h2>
+          <h2>
+            <ion-text>กรุณารอสังครู่...</ion-text>
+          </h2>
         </ion-label>
-
-        <ion-note>
-          <ion-label>
-            <h3>
-              <a class="link-medium">
-                <ion-icon name="share-outline"></ion-icon>&nbsp;แชร์
-              </a>
-            </h3>
-          </ion-label>
-        </ion-note>
       </ion-item>
 
       <ion-item class="ion-margin-top" lines="none" color="tertiary">
@@ -86,12 +75,12 @@
         <ion-grid class="ion-no-padding">
 
           <ion-label for="customInputAmount">
-            <h2><b>หมายเลขพร้อมเพย์</b>&nbsp;<ion-text color="medium">4058123336</ion-text>
+            <h2><b>หมายเลขพร้อมเพย์</b>&nbsp;<ion-text color="medium">{{reciever.id}}</ion-text>
             </h2>
           </ion-label>
 
           <ion-label for="customInputAmount">
-            <h2><b>ชื่อบัญชี</b>&nbsp;<ion-text color="medium">อานาน บางสาน</ion-text>
+            <h2><b>ชื่อบัญชี</b>&nbsp;<ion-text color="medium">{{reciever.ownerName}}</ion-text>
             </h2>
           </ion-label>
 
@@ -109,16 +98,6 @@
       </ion-item>
 
     </ion-card>
-    <div size="12" class="indentation">
-    </div>
-    <br>
-    <ion-label color="medium" class="ion-text-center">
-      <h3>
-        <a class="link-medium">
-          <ion-icon name="receipt-outline"></ion-icon>&nbsp;ดูรายละเอียดธุรกรรม
-        </a>
-      </h3>
-    </ion-label>
   </form>
 </ion-content>
 

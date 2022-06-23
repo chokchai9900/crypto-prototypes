@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CryptoWithdrawManaPage } from './crypto-withdraw-mana.page';
+import { CryptoTransactionWaitingResultPage } from './crypto-transaction-waiting-result.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: CryptoWithdrawManaPage
+    component: CryptoTransactionWaitingResultPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CryptoWithdrawManaPageRoutingModule {}
+export class CryptoTransactionWaitingResultPageRoutingModule {}

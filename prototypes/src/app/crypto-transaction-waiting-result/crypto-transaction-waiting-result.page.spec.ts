@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CryptoWithdrawManaSuccessPage } from './crypto-withdraw-mana-success.page';
+import { CryptoTransactionWaitingResultPage } from './crypto-transaction-waiting-result.page';
 
-describe('CryptoWithdrawManaSuccessPage', () => {
-  let component: CryptoWithdrawManaSuccessPage;
-  let fixture: ComponentFixture<CryptoWithdrawManaSuccessPage>;
+describe('CryptoTransactionWaitingResultPage', () => {
+  let component: CryptoTransactionWaitingResultPage;
+  let fixture: ComponentFixture<CryptoTransactionWaitingResultPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CryptoWithdrawManaSuccessPage ],
+      declarations: [ CryptoTransactionWaitingResultPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CryptoWithdrawManaSuccessPage);
+    fixture = TestBed.createComponent(CryptoTransactionWaitingResultPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

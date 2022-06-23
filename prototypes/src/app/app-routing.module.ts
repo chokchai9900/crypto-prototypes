@@ -90,7 +90,8 @@ const routes: Routes = [
   {
     path: 'form-service',
     loadChildren: () => import('./form-service/form-service.module').then( m => m.FormServicePageModule)
-  },  {
+  },
+  {
     path: 'option-dialog-no-submit',
     loadChildren: () => import('./option-dialog-no-submit/option-dialog-no-submit.module').then( m => m.OptionDialogNoSubmitPageModule)
   },
@@ -117,21 +118,6 @@ const routes: Routes = [
   {
     path: 'crypto-wallet-detail',
     loadChildren: () => import('./crypto-wallet-detail/crypto-wallet-detail.module').then( m => m.CryptoWalletDetailPageModule)
-  },  {
-    path: 'crypto-withdraw-mana-list',
-    loadChildren: () => import('./crypto-withdraw-mana-list/crypto-withdraw-mana-list.module').then( m => m.CryptoWithdrawManaListPageModule)
-  },
-  {
-    path: 'crypto-withdraw-mana',
-    loadChildren: () => import('./crypto-withdraw-mana/crypto-withdraw-mana.module').then( m => m.CryptoWithdrawManaPageModule)
-  },
-  {
-    path: 'crypto-withdraw-mana-confirm',
-    loadChildren: () => import('./crypto-withdraw-mana-confirm/crypto-withdraw-mana-confirm.module').then( m => m.CryptoWithdrawManaConfirmPageModule)
-  },
-  {
-    path: 'crypto-withdraw-mana-success',
-    loadChildren: () => import('./crypto-withdraw-mana-success/crypto-withdraw-mana-success.module').then( m => m.CryptoWithdrawManaSuccessPageModule)
   },
   {
     path: 'crypto-transfer-list',
