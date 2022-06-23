@@ -16,7 +16,7 @@ export class CryptoTransferListPage implements OnInit {
 
   private fixWallet: Wallet = { icon: "assets/imgs/2844386_crypto_eth_ethcoin_etherium_icon.png", name: "ANON_ETH", currency: "ETH", exhangeRate: 60000, id: "03366988744", ownerName: "อานน บางสาน", walletType: WalletType.CRYPTOX, amount: 100 }
 
-  private flow = Flow.WITHDRAW_MANA;
+  private flow = Flow.WITHDRAW_CRYPTO;
 
   constructor(private router: Router) {
   }

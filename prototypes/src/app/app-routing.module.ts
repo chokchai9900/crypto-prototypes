@@ -149,6 +149,10 @@ const routes: Routes = [
     path: 'crypto-transfer-success',
     loadChildren: () => import('./crypto-transfer-success/crypto-transfer-success.module').then( m => m.CryptoTransferSuccessPageModule)
   },
+  {
+    path: 'crypto-transaction-waiting-result',
+    loadChildren: () => import('./crypto-transaction-waiting-result/crypto-transaction-waiting-result.module').then( m => m.CryptoTransactionWaitingResultPageModule)
+  },
 
 
 ];
