@@ -1,31 +1,30 @@
 <ion-header>
-
+  <ion-toolbar>
+    <ion-title>Mana Crypto Wallet</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   <ion-list lines="none" *ngFor="let info of data" >
     <ion-list-header lines="none" mode="md">
-      <ion-label>เลือกกระเป๋าเงิน Crypto</ion-label>
+      <ion-label>เลือกกระเป๋าเงิน Mana Crypto</ion-label>
     </ion-list-header>
     <ng-container *ngFor="let item of info.data">
-
-    <a *ngIf="item.link" target="_blank" [routerLink]="item.link">
-      <ion-item button class="ion-margin-bottom" color="tertiary">
+      <ion-item button class="ion-margin-bottom" color="tertiary" (click)="goNext(item)">
         <ion-avatar slot="start">
-          <img src="{{item.imgUrl}}" />
+          <img [src]="item.icon" />
         </ion-avatar>
         <ion-label>
-          <b>{{item.currencyName}}</b>
+          <b>{{item.name}}</b>
           <ion-text color="medium">
             <h3>
-              <img width="12" height="12" src="assets/imgs/defaultshop.png"> Crypto {{item.currencyName}}
+              Mana Crypto {{item.currency}}
             </h3>
           </ion-text>
         </ion-label>
-        <ion-note slot="end" color="danger">{{item.balance}} {{item.currencySymbol}}</ion-note>
+        <ion-note slot="end" color="danger">{{item.amount}} {{item.currency}}</ion-note>
       </ion-item>
-    </a>
     </ng-container>
     
   </ion-list>

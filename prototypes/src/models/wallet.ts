@@ -25,10 +25,16 @@ export const Flow = {
      DEPOSITE_CRYPTO: "DEPOSITE_CRYPTO"
 };
 
+export const Method =
+{
+     WITHDRAW: "WITHDRAW",
+     DEPOSIT: "DEPOSIT"
+}
+
 export function GetLineText(walletType: string): any {
      switch (walletType) {
           case WalletType.CRYPTO: return { line1: "Address", line2: "Network" };
-          case WalletType.CRYPTOX: return { line1: "กระเป๋า", line2: "ประเภท" };
+          case WalletType.CRYPTOX: return { line1: "Address", line2: "Network" };
           case WalletType.BANK: return { line1: "เลขบัญชี", line2: "ชื่อบัญชี" };
           case WalletType.PROMPAY: return { line1: "หมายเลขพร้อมเพย์", line2: "ชื่อบัญชี" };
      }
@@ -40,4 +46,8 @@ export function GetTitle(flow: string): any {
           case "WITHDRAW": return "ถอน";
           case "DEPOSITE": return "เติม";
      }
+}
+
+export function ExangeRate(from: number, to: number): number {
+     return from/to;
 }

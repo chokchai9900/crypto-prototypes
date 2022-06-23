@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Flow, Wallet, WalletType } from 'src/models/Wallet';
 
 @Component({
@@ -8,11 +8,18 @@ import { Flow, Wallet, WalletType } from 'src/models/Wallet';
   styleUrls: ['./crypto-deposit-qr-edit.page.scss'],
 })
 export class CryptoDepositQrEditPage implements OnInit {
-  public reciever = { icon: "assets/imgs/2844386_crypto_eth_ethcoin_etherium_icon.png", name: "ANON_ETH", currency: "ETH", exhangeRate: 60000, idOrAddress: "0xasff45f644gga", ownerOrNetwork: "ERC20", walletType: WalletType.CRYPTOX, amount: 3000 };
-
+  public reciever :Wallet;
   private flow = Flow.DEPOSITE_QR;
   
-  constructor(private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router) {
+    if (this.route.queryParams) {
+      this.route.queryParams.subscribe(params => {
+        this.reciever = JSON.parse(params["reciever"]);
+        console.log(JSON.stringify(this.reciever));
+        
+      });
+    }
+  }
 
   ngOnInit() {
   }

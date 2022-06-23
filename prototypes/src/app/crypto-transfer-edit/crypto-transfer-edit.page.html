@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <div>
+  <form [formGroup]="fg">
     <ion-list class="ion-margin-top" lines="full">
       <ion-item color="tertiary" lines="none">
         <ion-label for="customInputAmount">
@@ -49,7 +49,7 @@
       </ion-item>
       <ion-item color="tertiary" lines="full">
         <ion-input id="customInputAmount" customInput="true" placeholder="ระบุยอดเงิน"
-          class="ion-text-center input-money" color="danger">
+          class="ion-text-center input-money" color="danger" formControlName="amount" (ionChange)="onChangeAmount($event)">
         </ion-input>
         <ion-label slot="end" class="ion-no-margin" color="danger">
           <h2><b><small>{{sender.currency}}</small></b></h2>
@@ -70,7 +70,7 @@
       </ion-item>
       <ion-item color="tertiary" lines="full">
         <ion-label color="danger" class="ion-text-center">
-          <h2><b>1.04</b></h2>
+          <h2><b>{{converted}}</b></h2>
         </ion-label>
         <ion-label  class="ion-no-margin" color="danger" slot="end">
           <h2><b><small>{{reciever.currency}}</small></b></h2>
@@ -79,7 +79,7 @@
 
       <ion-item color="tertiary" lines="none">
         <ion-label color="medium" class="ion-text-center">
-          <h3>1 {{sender.currency}} ~ 50,000 {{reciever.currency}}</h3>
+          <h3>1 {{sender.currency}} ~ {{exhangeLate}} {{reciever.currency}}</h3>
         </ion-label>
       </ion-item>
 
@@ -114,7 +114,7 @@
         <ion-textarea type="text" placeholder="" rows="1" [disabled]="true">มีหยังก็ใส่มาหมายเหตุในฝัน</ion-textarea>
       </ion-item>
     </ion-list>
-  </div>
+  </form>
 </ion-content>
 
 <ion-footer class="ion-no-border">
