@@ -4,21 +4,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content mode="ios">
-  <ng-container>
-    <form>
-      <ion-list lines="none">
-        <ion-item color="tertiary" class="ion-margin-top">
-          <img class="logo-l circle center ion-margin-top" [src]="reciever.icon">
-        </ion-item>
-        <ion-item color="tertiary" class="ion-text-center">
-          <ion-label class="ion-no-margin">
+<ion-content mode="ios" class="ion-padding-top">
+  <ion-list lines="none">
+    <ion-card color="tertiary">
+      <ion-card-content class="ion-no-padding">
+        <div class="ion-text-center ion-padding-top">
+          <ion-avatar slot="start" class="avatar-l center ion-margin-bottom">
+            <img [src]="reciever.icon">
+          </ion-avatar>
+          <ion-label class="ion-text-center">
             <h2><b>{{reciever.name}}</b></h2>
           </ion-label>
-        </ion-item>
+        </div>
 
-        <ion-item color="tertiary" lines="full">
-          <ion-grid class="ion-no-padding">
+        <ion-item class="ion-no-padding" color="tertiary" lines="full">
+          <ion-grid class="ion-padding">
             <ion-row>
               <ion-col class="ion-no-padding">
                 <ion-label>
@@ -28,7 +28,7 @@
             </ion-row>
             <ion-row>
               <ion-col class="ion-no-padding">
-                <ion-label>
+                <ion-label color="medium">
                   <h3 class="line-height2">รวมทั้งหมด</h3>
                 </ion-label>
               </ion-col>
@@ -40,24 +40,24 @@
             </ion-row>
             <ion-row>
               <ion-col class="ion-no-padding">
-                <ion-label>
+                <ion-label color="medium">
                   <h3 class="line-height2">จำนวนเงิน</h3>
                 </ion-label>
               </ion-col>
               <ion-col class="ion-no-padding ion-text-right">
-                <ion-label>
+                <ion-label color="medium">
                   <h3>{{transaction.amount}} <small>{{sender.currency}}</small></h3>
                 </ion-label>
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col class="ion-no-padding">
-                <ion-label>
+                <ion-label color="medium">
                   <h3 class="line-height2">ค่าธรรมเนียม</h3>
                 </ion-label>
               </ion-col>
               <ion-col class="ion-no-padding ion-text-right">
-                <ion-label>
+                <ion-label color="medium">
                   <h3>{{transaction.fee}} <small>{{sender.currency}}</small></h3>
                 </ion-label>
               </ion-col>
@@ -65,13 +65,13 @@
 
             <ion-row *ngIf="transaction.gas != null">
               <ion-col class="ion-no-padding">
-                <ion-label>
+                <ion-label color="medium">
                   <h3 class="line-height2">ค่า gas</h3>
                 </ion-label>
               </ion-col>
               <ion-col class="ion-no-padding ion-text-right">
-                <ion-label>
-                  <h3>{{transaction.gas}} <small>{{sender.currency}}</small></h3>
+                <ion-label color="medium">
+                  <h3>{{transaction.gas.amount}} <small>{{transaction.gas.currency}}</small></h3>
                 </ion-label>
               </ion-col>
             </ion-row>
@@ -84,56 +84,62 @@
               </ion-col>
               <ion-col class="ion-no-padding ion-text-right">
                 <ion-label color="medium">
-                  <h3>*รวมทั้งหมด ({{sender.currency}})<b> {{transaction.amount+transaction.fee+transaction.gas}}
-                      <small>{{sender.currency}}</small></b></h3>
+                  <h3>*รวมทั้งหมด ({{sender.currency}})<b>
+                      {{totalPay}}
+                      <small>{{sender.currency}}</small></b>
+                  </h3>
+                  <h3 *ngIf="sender.currency == 'USDT'">*รวมทั้งหมด ({{transaction.gas.currency}})<b>
+                      {{transaction.gas.amount}}
+                      <small>{{transaction.gas.currency}}</small></b>
+                  </h3>
                 </ion-label>
               </ion-col>
             </ion-row>
           </ion-grid>
         </ion-item>
 
-        <ion-item color="tertiary" lines="full" class="ion-margin-bottom">
-          <img slot="start" width="22" height="22" class="qr" [src]="sender.icon" />
-          <ion-label class="ion-no-margin">
-            <h3>{{sender.name}}</h3>
-          </ion-label>
-        </ion-item>
-      </ion-list>
-
-      <div *ngIf="reciever.extraPrefix != null">
-        <ion-item lines="none" color="tertiary">
-          <ion-label>
-            <h2><b>เพิ่มเติม</b></h2>
-          </ion-label>
-        </ion-item>
-
-        <div class="item-bottom">
-          <slot name="error"></slot>
-          <slot name="helper"></slot>
-        </div>
-        <ion-item color="tertiary" lines="full">
-          <ion-grid class="ion-no-padding">
-            <ion-label class="ion-padding-bottom">
-              <h2 *ngFor="let item of reciever.extraPrefix ; let i = index">
-                <b>{{item}}</b>&nbsp;
-                <ion-text color="medium">{{reciever.extraText[i]}}</ion-text>
-              </h2>
+        <ion-list class="ion-margin-top" lines="full">
+          <ion-item color="tertiary" lines="full">
+            <img slot="start" width="22" height="22" class="qr" [src]="sender.icon" />
+            <ion-label class="ion-no-margin" color="medium">
+              <h3>{{sender.name}}</h3>
             </ion-label>
-          </ion-grid>
-        </ion-item>
-      </div>
+          </ion-item>
 
-      <ion-item color="tertiary" lines="none">
-        <ion-label>
-          <h2><b>หมายเหตุ</b></h2>
+          <ion-item *ngIf="sender.currency == 'USDT'" color="tertiary" lines="full">
+            <img slot="start" width="22" height="22" class="qr" [src]="GasWallet.icon" />
+            <ion-label class="ion-no-margin" color="medium">
+              <h3>{{GasWallet.name}}</h3>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-list class="ion-margin-top" lines="full">
+    <div *ngIf="reciever.extraPrefix != null">
+      <ion-item class="ion-no-padding" color="tertiary" lines="full">
+        <ion-label class="ion-padding-start">
+          <h3><b>เพิ่มเติม</b></h3>
+          <h3 *ngFor="let item of reciever.extraPrefix ; let i = index">
+            <b>{{item}}</b>&nbsp;
+            <ion-text color="medium">{{reciever.extraText[i]}}</ion-text>
+          </h3>
         </ion-label>
       </ion-item>
-      <ion-item color="tertiary" lines="none">
-        <ion-textarea type="text" placeholder="" rows="1" [disabled]="true">มีหยังก็ใส่มาหมายเหตุในฝัน</ion-textarea>
-      </ion-item>
+    </div>
 
-    </form>
-  </ng-container>
+    <ion-item class="ion-no-padding" color="tertiary" lines="none">
+      <ion-label class="ion-padding-start">
+        <h3><b>หมายเหตุ</b></h3>
+        <h3>
+          <ion-text color="medium">มีหยังก็ใส่มาหมายเหตุในฝัน</ion-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
 
 <ion-footer class="ion-no-border">

@@ -38,11 +38,13 @@ export const WalletType = {
 };
 
 export const Flow = {
-     WITHDRAW_ADRESS: "WITHDRAW_ADRESS",
-     WITHDRAW_MANA: "WITHDRAW_MANA",
+     WITHDRAW_CRYPTO_ADRESS: "WITHDRAW_CRYPTO_ADRESS",
+     WITHDRAW_FIAT_MANA: "WITHDRAW_FIAT_MANA",
+     WITHDRAW_FIAT_BANK: "WITHDRAW_FIAT_BANK",
      WITHDRAW_CRYPTO: "WITHDRAW_CRYPTO",
-     DEPOSITE_QR: "DEPOSITE_QR",
-     DEPOSITE_MANA: "DEPOSITE_MANA",
+     DEPOSITE_CRYPTO_QR: "DEPOSITE_CRYPTO_QR",
+     DEPOSITE_FIAT_MANA: "DEPOSITE_FIAT_MANA",
+     DEPOSITE_FIAT_BANK: "DEPOSITE_FIAT_BANK",
      DEPOSITE_CRYPTO: "DEPOSITE_CRYPTO"
 };
 
@@ -50,6 +52,13 @@ export const Method =
 {
      WITHDRAW: "WITHDRAW",
      DEPOSIT: "DEPOSIT"
+}
+
+export const Chain =
+{
+     MANA: "Mana main chain",
+     ETH: "Eterium main chain",
+     BTC: "Bitcoin main chain",
 }
 
 export function GetLineText(walletType: string): string[] {
@@ -75,15 +84,21 @@ export function ExangeRateFromCurrency(from: string, to: string): number {
      return f / t;
 }
 
-export function GetRate(currentcy: string) {
-     return ExangeRate[currentcy];
+export function GetRate(currency: string) {
+     return ExangeRate[currency];
 }
 
-export function GetGasRate(from: string, to: string) {
-     var gasLate = 0.25;
-     if (to == "USDT") to = "ETH";
-     var exRate = ExangeRateFromCurrency(to,from)
-     return gasLate*exRate;
+export function GetGasRate(from: string) {
+     console.log("From : " + from);
+
+     if (from == "USDT") from = "ETH";
+     return { amount: 0.25, currency: from };
+}
+
+export function ParseToTwoDecimal(value: number): number {
+     if (value != null)
+          return Number.parseFloat(this.InputToDecimal(value.toString()));
+     else return 0;
 }
 
 export class MockModel {
@@ -119,8 +134,8 @@ export class MockModel {
                subname: "เอาไว้จ้างหมอหมอนวด",
                walletType: WalletType.BANK,
                balance: null,
-               extraPrefix: null,
-               extraText: null,
+               extraPrefix: new Array("หมายเลขพร้อมเพย์"),
+               extraText: new Array("0944554445"),
                idNumber: "0944554445",
                owner: "รักหมอ คอไม่แข็ง"
           },
@@ -131,9 +146,9 @@ export class MockModel {
                subname: "ระวังเมียเห็น",
                walletType: WalletType.BANK,
                balance: null,
-               extraPrefix: null,
-               extraText: null,
-               idNumber: "4056155546",
+               extraPrefix: new Array("เลขที่บัญชี"),
+               extraText: new Array("4055666698"),
+               idNumber: "4055666698",
                owner: "ฉันรวย อวยมาก"
           }
      ];
@@ -149,7 +164,7 @@ export class MockModel {
                extraPrefix: new Array("Address", "Network"),
                extraText: new Array("0xb421eb83e1bb42da905341fd47c8e51c", "ETH main network"),
                address: "0xb421eb83e1bb42da905341fd47c8e51c",
-               network: "ETH main network"
+               network: Chain.ETH
           },
           {
                icon: "assets/imgs/bitcoin.png",
@@ -161,7 +176,7 @@ export class MockModel {
                extraPrefix: new Array("Address", "Network"),
                extraText: new Array("b1867566d9af284ecf815ea47ea8b895bc", "Bitcoin main network"),
                address: "b1867566d9af284ecf815ea47ea8b895bc",
-               network: "Bitcoin main network"
+               network: Chain.BTC
           },
           {
                icon: "assets/imgs/usdt.png",
@@ -173,7 +188,7 @@ export class MockModel {
                extraPrefix: new Array("Address", "Network"),
                extraText: new Array("0x95e2cacf83b48e3862b5e91ea9ceb8d", "ETH main network"),
                address: "0x95e2cacf83b48e3862b5e91ea9ceb8d",
-               network: "ETH main network"
+               network: Chain.ETH
           }
      ];
 
@@ -188,7 +203,7 @@ export class MockModel {
                extraPrefix: new Array("Address", "Network"),
                extraText: new Array("me0d2412589d1649bf9259d9eb42501176", "Mana ETH network"),
                address: "me0d2412589d1649bf9259d9eb42501176",
-               network: "Mana ETH network"
+               network: Chain.MANA
           },
           {
                icon: "assets/imgs/bitcoinX.png",
@@ -200,7 +215,7 @@ export class MockModel {
                extraPrefix: new Array("Address", "Network"),
                extraText: new Array("mb924249a5b18343a188415dd3c6de3fa8", "Mana BTC network"),
                address: "mb924249a5b18343a188415dd3c6de3fa8",
-               network: "Mana BTC network"
+               network: Chain.MANA
           },
           {
                icon: "assets/imgs/usdtX.png",
@@ -212,7 +227,7 @@ export class MockModel {
                extraPrefix: new Array("Address", "Network"),
                extraText: new Array("mubd8d1451bf114b6dbcd7ccfcc9dbdadf", "Mana USDT network"),
                address: "mubd8d1451bf114b6dbcd7ccfcc9dbdadf",
-               network: "Mana USDT network"
+               network: Chain.MANA
           }
      ];
 }

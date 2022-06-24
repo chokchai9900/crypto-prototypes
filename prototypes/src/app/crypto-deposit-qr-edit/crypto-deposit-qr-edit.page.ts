@@ -11,7 +11,7 @@ import { Flow, WalletType } from 'src/services/wallet.service';
 export class CryptoDepositQrEditPage implements OnInit {
 
   public reciever :any;
-  private flow = Flow.DEPOSITE_QR;
+  private flow = Flow.DEPOSITE_CRYPTO_QR;
   public fg: FormGroup;
   public address: string;
   

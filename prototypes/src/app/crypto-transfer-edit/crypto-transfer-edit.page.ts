@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { ExangeRateFromCurrency, GetGasRate, GetLineText, GetTitle } from 'src/services/wallet.service';
+import { ExangeRateFromCurrency as ExangeRateFromNetwork, GetGasRate, GetLineText, GetTitle, MockModel } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-transfer-edit',
@@ -22,8 +22,9 @@ export class CryptoTransferEditPage implements OnInit {
   public converted: number = 0;
   public fee: number = 0.5;
 
-  public totalGas: number = null;
-  public gasCurrentcy: string;
+  public gas:any;
+
+  public GasWallet:any = MockModel.cryptoWallets[0];
 
   constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
     this.fg = this.fb.group({
@@ -39,9 +40,13 @@ export class CryptoTransferEditPage implements OnInit {
         this.reciever = JSON.parse(params["reciever"]);
         this.flow = params["flow"];
         this.title = GetTitle(this.flow);
+
+        this.exhangeLate = ExangeRateFromNetwork(this.sender.currency, this.reciever.currency);
         
-        this.exhangeLate = ExangeRateFromCurrency(this.sender.currency, this.reciever.currency);
-        if (this.flow.split("_")[1] == "CRYPTO") this.totalGas = GetGasRate(this.sender.currency,this.reciever.currency);
+
+        if (this.sender.walletType == "CRYPTO") {
+          this.gas = GetGasRate(this.sender.currency);
+        }
       });
     }
   }
@@ -57,7 +62,7 @@ export class CryptoTransferEditPage implements OnInit {
   public goNext() {
     this.fg.get("converted").setValue(this.converted);
     this.fg.get("fee").setValue(this.fee);
-    this.fg.get("gas").setValue(this.totalGas);
+    this.fg.get("gas").setValue(this.gas);
     let param: NavigationExtras = { queryParams: { flow: this.flow, sender: JSON.stringify(this.sender), reciever: JSON.stringify(this.reciever), transaction: JSON.stringify(this.fg.value) } };
     this.router.navigate(['/crypto-transfer-confirm'], param);
   }

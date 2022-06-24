@@ -1,94 +1,96 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{title}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="transaction" mode="ios">
 
-<ion-content class="transaction ion-padding-top" mode="ios">
-  <form>
-    <ion-card class="ion-padding-top" color="tertiary">
-      <ion-item class="ion-text-center ion-margin-bottom" color="tertiary" lines="none">
-        <ion-grid class="ion-padding">
-          <ion-row class="ion-text-center ion-align-items-center">
-            <ion-col size="6" class="ion-text-center">
-              <div class="content-center">
-                <img class="icon transaction-img" [src]="sender.icon">
-              </div>
-              <ion-icon class="right-arrow" name="chevron-forward-sharp"></ion-icon>
-            </ion-col>
-            <ion-col size="6" class="ion-text-center">
-              <div class="content-center">
-                <img class="icon circle transaction-img" [src]="reciever.icon">
-              </div>
-            </ion-col>
-          </ion-row>
-          <ion-row class="ion-text-center ion-align-items-center">
-            <ion-col size="6" class="ion-text-center ion-no-padding">
-              <ion-label class="ion-text-nowrap">
-                <h3><b> {{sender.name}}</b></h3>
-              </ion-label>
-            </ion-col>
-            <ion-col size="6" class="ion-text-center ion-no-padding">
-              <ion-label class="ion-text-nowrap">
-                <h3><b> {{reciever.name}}</b></h3>
-              </ion-label>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
+  <ion-card class="ion-padding-top" color="tertiary">
+    <ion-item class="ion-text-center ion-margin-bottom" color="tertiary" lines="none">
+      <ion-grid class="ion-padding">
+        <ion-row class="ion-text-center ion-align-items-center">
+          <ion-col size="6" class="ion-text-center">
+            <div class="content-center">
+              <img class="icon transaction-img" [src]="sender.icon">
+            </div>
+            <ion-icon class="right-arrow" name="chevron-forward-sharp"></ion-icon>
+          </ion-col>
+          <ion-col size="6" class="ion-text-center">
+            <div class="content-center">
+              <img class="icon circle transaction-img" [src]="reciever.icon">
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-text-center ion-align-items-center">
+          <ion-col size="6" class="ion-text-center ion-no-padding">
+            <ion-label class="ion-text-nowrap">
+              <h3><b> {{sender.name}}</b></h3>
+            </ion-label>
+          </ion-col>
+          <ion-col size="6" class="ion-text-center ion-no-padding">
+            <ion-label class="ion-text-nowrap">
+              <h3><b> {{reciever.name}}</b></h3>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
 
-      <ion-item class="ion-text-center" color="tertiary" lines="full">
-        <ion-label color="danger" class="ion-padding-bottom">
-          <h2><b>
-              <ion-icon color="primary" name="checkmark-circle-sharp"></ion-icon>
-              {{transaction.converted}}
-              <small>{{reciever.currency}}</small>
-            </b>
-          </h2>
-          <ion-text color="medium">
-            <h3>
-              <ion-icon></ion-icon>
-              {{transaction.amount+transaction.fee}}
-              <small>{{sender.currency}}</small>
-            </h3>
-          </ion-text>
-        </ion-label>
-      </ion-item>
-<!-- ============================================================================== -->
-      <ion-item color="tertiary" class="ion-padding-vertical" lines="full">
-        <ion-avatar slot="start" class="avatar-m">
-          <img class="non-circle" src="assets/imgs/qrcode.png" />
-        </ion-avatar>
+    <ion-item class="ion-text-center" color="tertiary" lines="full">
+      <ion-label color="danger" class="ion-padding-bottom">
+        <h2><b>
+            <ion-icon color="primary" name="checkmark-circle-sharp"></ion-icon>
+            {{transaction.converted}}
+            <small>{{reciever.currency}}</small>
+          </b>
+        </h2>
+        <ion-text color="medium">
+          <h3>
+            <ion-icon></ion-icon>
+            {{totalPay}}
+            <small>{{sender.currency}}</small>
+          </h3>
+        </ion-text>
+
+        <ion-text color="medium" *ngIf="sender.currency == 'USDT'">
+          <h3>
+            <ion-icon></ion-icon>
+            {{transaction.gas.amount}}
+            <small>{{transaction.gas.currency}}</small>
+          </h3>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <!-- ============================================================================== -->
+    <ion-item *ngIf="flow.split('_')[1]!='CRYPTO'" color="tertiary" class="ion-padding-vertical" lines="full">
+      <ion-avatar slot="start" class="avatar-m">
+        <img class="non-circle" src="assets/imgs/qrcode.png" />
+      </ion-avatar>
+      <ion-label>
+        <h2><b>รหัสอ้างอิง : TST</b></h2>
+        <ion-text color="medium">
+          <h3>วันที่ : {{now| date:'dd/MM/yyyy ( H:mm )'}}</h3>
+        </ion-text>
+      </ion-label>
+
+      <ion-note>
         <ion-label>
-          <h2><b>รหัสอ้างอิง : TST</b></h2>
-          <ion-text color="medium">
-            <h3>วันที่ : {{now| date:'dd/MM/yyyy ( H:mm )'}}</h3>
-          </ion-text>
+          <h3>
+            <a class="link-medium">
+              <ion-icon name="share-outline"></ion-icon>&nbsp;แชร์
+            </a>
+          </h3>
         </ion-label>
-
-        <ion-note>
-          <ion-label>
-            <h3>
-              <a class="link-medium">
-                <ion-icon name="share-outline"></ion-icon>&nbsp;แชร์
-              </a>
-            </h3>
-          </ion-label>
-        </ion-note>
-      </ion-item>
-<!-- ============================================================================== -->
-      <ion-item color="tertiary" class="ion-padding-vertical" lines="full">
-        <ion-label class="ion-text-center">
-          <h2>
-            <ion-text>กำลังดำเนินการโอน crypto ไปยังปลายทาง</ion-text>
-          </h2>
-          <h2>
-            <ion-text>กรุณารอสังครู่...</ion-text>
-          </h2>
-        </ion-label>
-      </ion-item>
-<!-- ============================================================================== -->
-<!--
+      </ion-note>
+    </ion-item>
+    <!-- ============================================================================== -->
+    <ion-item *ngIf="flow.split('_')[1]=='CRYPTO'" color="tertiary" class="ion-padding-vertical" lines="full">
+      <ion-label class="ion-text-center">
+        <h2>
+          <ion-text>กำลังดำเนินการโอน crypto ไปยังปลายทาง</ion-text>
+        </h2>
+        <h2>
+          <ion-text>กรุณารอสังครู่...</ion-text>
+        </h2>
+      </ion-label>
+    </ion-item>
+    <!-- ============================================================================== -->
+    <!--
 <ion-item class="ion-no-padding ion-text-justify" color="tertiary" lines="none">
   <ion-grid class="ion-padding">
     <ion-row>
@@ -131,53 +133,51 @@
   </ion-grid>
 </ion-item>-->
 
-<!-- =================================From original================================ -->
+    <!-- =================================From original================================ -->
 
-<ion-item class="ion-margin-top" lines="none" color="tertiary">
-  <ion-label for="customInputAmount">
-    <h2><b>Information</b></h2>
-  </ion-label>
-</ion-item>
-<ion-item class="ion-margin-bottom ion-text-wrap" lines="full" color="tertiary">
-  <ion-grid class="ion-no-padding">
 
-    <ion-label>
-      <h2><b>Address</b>&nbsp;<ion-text color="medium">{{reciever.idOrAddress}}</ion-text></h2>
-    </ion-label>
-    <ion-label>
-      <h2><b>Network</b>&nbsp;<ion-text color="medium">{{reciever.ownerOrNetwork}}</ion-text></h2>
-    </ion-label>
-    <ion-label>
-      <h2><b>TxID</b>&nbsp;<ion-text color="medium">0x9cf4504599ccb364373951f8b0e1af8c207fb9c76ded717641e4ea1140e385e0</ion-text></h2>
-    </ion-label>
+    <ion-list class="ion-margin-top" lines="full">
+      <div *ngIf="reciever.extraPrefix != null">
+        <ion-item class="ion-no-padding" color="tertiary" lines="full">
+          <ion-label class="ion-padding-start ion-padding-vertical">
+            <h3><b>เพิ่มเติม</b></h3>
+            <h3 *ngFor="let item of reciever.extraPrefix ; let i = index">
+              <b>{{item}}</b>&nbsp;
+              <ion-text color="medium">{{reciever.extraText[i]}}</ion-text>
+            </h3>
+            <h3 *ngIf="flow.split('_')[1]=='CRYPTO'"><b>TxID</b>&nbsp;<ion-text color="medium">
+              0x9cf4504599ccb364373951f8b0e1af8c207fb9c76ded717641e4ea1140e385e0</ion-text>
+          </h3>
+          <h3 *ngIf="flow.split('_')[1]=='CRYPTO'"><b>Link</b>&nbsp;<ion-text color="medium">
+              <a>link trasaction</a>
+            </ion-text>
+          </h3>
+          </ion-label>
+        </ion-item>
+      </div>
 
-  </ion-grid>
-</ion-item>
-
-<!-- ============================================================================== -->
-
-      <ion-item color="tertiary" lines="none">
-        <ion-label for="customInputAmount">
-          <h2><b>หมายเหตุ</b></h2>
+      <ion-item class="ion-no-padding" color="tertiary" lines="none">
+        <ion-label class="ion-padding-start ion-padding-vertical">
+          <h3><b>หมายเหตุ</b></h3>
+          <h3>
+            <ion-text color="medium">มีหยังก็ใส่มาหมายเหตุในฝัน</ion-text>
+          </h3>
         </ion-label>
       </ion-item>
-      <ion-item color="tertiary" lines="none">
-        <ion-textarea type="text" placeholder="" rows="1" [disabled]="true">
-          มีหยังก็ใส่มาหมายเหตุในฝัน</ion-textarea>
-      </ion-item>
+    </ion-list>
+    <br/>
+  </ion-card>
+  <div size="12" class="indentation">
+  </div>
+  <br>
+  <ion-label color="medium" class="ion-text-center">
+    <h3>
+      <a class="link-medium">
+        <ion-icon name="receipt-outline"></ion-icon>&nbsp;ดูรายละเอียดธุรกรรม
+      </a>
+    </h3>
+  </ion-label>
 
-    </ion-card>
-    <div size="12" class="indentation">
-    </div>
-    <br>
-    <ion-label color="medium" class="ion-text-center">
-      <h3>
-        <a class="link-medium">
-          <ion-icon name="receipt-outline"></ion-icon>&nbsp;ดูรายละเอียดธุรกรรม
-        </a>
-      </h3>
-    </ion-label>
-  </form>
 </ion-content>
 
 <ion-footer class="ion-no-border">

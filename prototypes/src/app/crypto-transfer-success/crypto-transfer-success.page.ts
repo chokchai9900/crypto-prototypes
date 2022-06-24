@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GetLineText, GetTitle } from 'src/services/wallet.service';
+import { GetLineText, GetTitle, MockModel } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-transfer-success',
@@ -16,8 +16,9 @@ export class CryptoTransferSuccessPage implements OnInit {
   public flow: string;
   public transaction:any;
 
-  public lineText: any;
   public now: any = new Date().toISOString()
+
+  public totalPay:string;
 
   constructor(private route: ActivatedRoute, private router: Router) {
     if (this.route.queryParams) {
@@ -27,8 +28,10 @@ export class CryptoTransferSuccessPage implements OnInit {
         this.transaction = JSON.parse(params["transaction"]);
         this.flow = params["flow"];
 
-        this.lineText = GetLineText(this.reciever.walletType);
         this.title = GetTitle(this.flow);
+
+        this.totalPay = this.transaction.amount + this.transaction.fee;
+        if (this.sender.currency == 'USDT') this.totalPay += this.transaction.gas.amount;
       });
     }
   }

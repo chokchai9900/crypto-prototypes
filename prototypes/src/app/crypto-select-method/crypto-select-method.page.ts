@@ -33,45 +33,32 @@ export class CryptoSelectMethodPage implements OnInit {
   }
 
   private goWithdrawAddress() {
-    let param: NavigationExtras = { queryParams: { flow: Flow.WITHDRAW_ADRESS, sender: JSON.stringify(this.sender) } };
+    let param: NavigationExtras = { queryParams: { flow: Flow.WITHDRAW_CRYPTO_ADRESS, sender: JSON.stringify(this.sender) } };
     this.router.navigate(['/crypto-withdraw-address'], param);
   }
 
-  private goWithdrawManaWallet() {
-    let param: NavigationExtras = { queryParams: { flow: Flow.WITHDRAW_MANA, sender: JSON.stringify(this.sender), wallets: JSON.stringify(this.manaWallets) } };
-    this.router.navigate(['/crypto-transfer-list'], param);
-  }
-
-  private goWithdrawCryptoWallet() {
-    let param: NavigationExtras = { queryParams: { flow: Flow.WITHDRAW_CRYPTO, sender: JSON.stringify(this.sender), wallets: JSON.stringify(this.cryptoWallets) } };
-    this.router.navigate(['/crypto-transfer-list'], param);
-  }
-
   private goDepositAddress() {
-    let param: NavigationExtras = { queryParams: { flow: Flow.DEPOSITE_QR, reciever: JSON.stringify(this.sender) } };
+    let param: NavigationExtras = { queryParams: { flow: Flow.DEPOSITE_CRYPTO_QR, reciever: JSON.stringify(this.sender) } };
     this.router.navigate(['/crypto-deposit-qr-edit'], param);
   }
 
-  private goDepositManaWallet() {
-    let param: NavigationExtras = { queryParams: { flow: Flow.DEPOSITE_MANA, sender: JSON.stringify(this.sender), wallets: JSON.stringify(this.manaWallets) } };
-    this.router.navigate(['/crypto-transfer-list'], param);
-  }
-
-  private goDepositCryptoWallet() {
-    let param: NavigationExtras = { queryParams: { flow: Flow.DEPOSITE_CRYPTO, sender: JSON.stringify(this.sender), wallets: JSON.stringify(this.cryptoWallets) } };
+  private goListSelect(flow: string, wallets: any) {
+    let param: NavigationExtras = { queryParams: { flow: flow, sender: JSON.stringify(this.sender), wallets: JSON.stringify(wallets) } };
     this.router.navigate(['/crypto-transfer-list'], param);
   }
 
   public goNext(flow: string) {
     if (this.method == Method.WITHDRAW) {
       if (flow == "address") this.goWithdrawAddress();
-      if (flow == "manawallet") this.goWithdrawManaWallet();
-      if (flow == "crypto") this.goWithdrawCryptoWallet();
+      if (flow == "manawallet") this.goListSelect(Flow.WITHDRAW_FIAT_MANA, this.manaWallets);
+      if (flow == "crypto") this.goListSelect(Flow.WITHDRAW_CRYPTO, this.cryptoWallets);
+      if (flow == "bank") this.goListSelect(Flow.WITHDRAW_FIAT_BANK, this.bankWallets);
     }
     if (this.method == Method.DEPOSIT) {
       if (flow == "address") this.goDepositAddress();
-      if (flow == "manawallet") this.goDepositManaWallet();
-      if (flow == "crypto") this.goDepositCryptoWallet();
+      if (flow == "manawallet") this.goListSelect(Flow.DEPOSITE_FIAT_MANA, this.manaWallets);
+      if (flow == "crypto") this.goListSelect(Flow.DEPOSITE_CRYPTO, this.cryptoWallets);
+      if (flow == "bank") this.goListSelect(Flow.DEPOSITE_FIAT_BANK, this.bankWallets);
     }
   }
 

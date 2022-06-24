@@ -21,7 +21,7 @@ export class CryptoTransferExchangePage implements OnInit {
   public exhangeLate: number;
   public converted: number = 0;
   public fee: number = 0.5;
-  public feeCurrentcy: string;
+  public feeCurrency: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
     this.fg = this.fb.group({
@@ -41,12 +41,8 @@ export class CryptoTransferExchangePage implements OnInit {
 
         this.exhangeLate = ExangeRateFromCurrency(this.sender.currency, this.reciever.currency);
 
-        this.feeCurrentcy = this.sender.currency;
-        if (this.sender.currency == "USDT") this.feeCurrentcy = "ETH"
-
-        // ETH  => Fee currentcy
-        // USDT => Sender currentcy
-        // totalFee = fee*(ETH/USDT)
+        this.feeCurrency = this.sender.currency;
+        if (this.sender.currency == "USDT") this.feeCurrency = "ETH"
       });
     }
   }

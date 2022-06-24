@@ -21,7 +21,7 @@ export class CryptoTransferListPage implements OnInit {
         this.sender = JSON.parse(params["sender"]);
         this.wallets = JSON.parse(params["wallets"]);
         this.flow = params["flow"];
-
+        
         this.title = GetTitle(this.flow);
       });
     }
@@ -45,8 +45,8 @@ export class CryptoTransferListPage implements OnInit {
     }
 
     let param: NavigationExtras = { queryParams: { flow: this.flow, sender: JSON.stringify(sender), reciever: JSON.stringify(reciever) } };
-    if (this.flow == Flow.DEPOSITE_QR) this.router.navigate(['/crypto-deposit-qr-edit'], param);
-    else if (this.flow == Flow.WITHDRAW_ADRESS) this.router.navigate(['/crypto-withdraw-address'], param);
+    if (this.flow == Flow.DEPOSITE_CRYPTO_QR) this.router.navigate(['/crypto-deposit-qr-edit'], param);
+    else if (this.flow == Flow.WITHDRAW_CRYPTO_ADRESS) this.router.navigate(['/crypto-withdraw-address'], param);
     else this.router.navigate(['/crypto-transfer-edit'], param);
   }
 }
