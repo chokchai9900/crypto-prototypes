@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { ExangeRate, GetLineText, GetTitle, Wallet } from 'src/models/wallet';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
+import { Wallet, GetLineText, GetTitle, ExangeRate } from 'src/models/Wallet';
 
 @Component({
-  selector: 'app-crypto-transfer-edit',
-  templateUrl: './crypto-transfer-edit.page.html',
-  styleUrls: ['./crypto-transfer-edit.page.scss'],
+  selector: 'app-crypto-transfer-exchange',
+  templateUrl: './crypto-transfer-exchange.page.html',
+  styleUrls: ['./crypto-transfer-exchange.page.scss'],
 })
-export class CryptoTransferEditPage implements OnInit {
+export class CryptoTransferExchangePage implements OnInit {
   public fg: FormGroup;
   public title: string;
 

@@ -38,11 +38,11 @@ export class CryptoWithdrawAddressPage implements OnInit {
     var convertRate = 1;
 
     if (this.fg.get("network").value == "BTC main network") {
-      icon = "assets/imgs/2844381_bitoin_btc_coin_crypto_icon.png";
+      icon = "assets/imgs/bitcoin.png";
       currency = "BTC";
       convertRate = 600000;
     } else {
-      icon = "assets/imgs/2844386_crypto_eth_ethcoin_etherium_icon.png";
+      icon = "assets/imgs/etherium.png";
       currency = "ETH";
       convertRate = 60000;
     }

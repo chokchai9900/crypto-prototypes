@@ -12,8 +12,9 @@ export class CryptoWalletPage implements OnInit {
 
   public data: any[] = [];
   public templates: Wallet[] = [
-    { icon: "assets/imgs/2844386_crypto_eth_ethcoin_etherium_icon.png", name: "WalletX_Eterium", currency: "ETH", exhangeRate: 60000, idOrAddress: "0xfadl154fasf1211ff", ownerOrNetwork: "Mana Chain", walletType: WalletType.CRYPTOX, amount: 3000 },
-    { icon: "assets/imgs/2844381_bitoin_btc_coin_crypto_icon.png", name: "WalletX_Bitcoin", currency: "BTC", exhangeRate: 600000, idOrAddress: "b1fadl154fasf366699", ownerOrNetwork: "Mana Chain", walletType: WalletType.CRYPTOX, amount: 50 }
+    { icon: "assets/imgs/etheriumX.png", name: "WalletX_Eterium", currency: "ETH", exhangeRate: 60000, idOrAddress: "0xfadl154fasf1211ff", ownerOrNetwork: "Mana Chain", walletType: WalletType.CRYPTOX, amount: 300000000 },
+    { icon: "assets/imgs/bitcoinX.png", name: "WalletX_Bitcoin", currency: "BTC", exhangeRate: 600000, idOrAddress: "b1fadl154fasf366699", ownerOrNetwork: "Mana Chain", walletType: WalletType.CRYPTOX, amount: 50000000 },
+    { icon: "assets/imgs/usdtX.png", name: "WalletX_USDT", currency: "USDT", exhangeRate: 6, idOrAddress: "usdtfadl154fasf366699", ownerOrNetwork: "Mana Chain", walletType: WalletType.CRYPTOX, amount: 80000000 }
   ];
 
   constructor(private router: Router) { }

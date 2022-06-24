@@ -136,10 +136,6 @@ const routes: Routes = [
     loadChildren: () => import('./crypto-transfer-success/crypto-transfer-success.module').then( m => m.CryptoTransferSuccessPageModule)
   },
   {
-    path: 'crypto-transaction-waiting-result',
-    loadChildren: () => import('./crypto-transaction-waiting-result/crypto-transaction-waiting-result.module').then( m => m.CryptoTransactionWaitingResultPageModule)
-  },
-  {
     path: 'crypto-withdraw-address',
     loadChildren: () => import('./crypto-withdraw-address/crypto-withdraw-address.module').then( m => m.CryptoWithdrawAddressPageModule)
   },
@@ -154,10 +150,15 @@ const routes: Routes = [
   {
     path: 'crypto-select-method',
     loadChildren: () => import('./crypto-select-method/crypto-select-method.module').then( m => m.CryptoSelectMethodPageModule)
-  },  {
+  },
+  {
     path: 'underconstruction',
     loadChildren: () => import('./underconstruction/underconstruction.module').then( m => m.UnderconstructionPageModule)
+  },  {
+    path: 'crypto-transfer-exchange',
+    loadChildren: () => import('./crypto-transfer-exchange/crypto-transfer-exchange.module').then( m => m.CryptoTransferExchangePageModule)
   },
+
 
 
 

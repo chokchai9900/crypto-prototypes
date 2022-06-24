@@ -19,8 +19,8 @@ export class CryptoSelectMethodPage implements OnInit {
   ];
 
   public cryptoWallets: Wallet[] = [
-    { icon: "assets/imgs/2844386_crypto_eth_ethcoin_etherium_icon.png", name: "Crypto_Eterium", currency: "ETH", exhangeRate: 60000, idOrAddress: "0xgadl1h4fase1211ff", ownerOrNetwork: "Eterium Network", walletType: WalletType.CRYPTO, amount: 200 },
-    { icon: "assets/imgs/2844381_bitoin_btc_coin_crypto_icon.png", name: "Crypto_Bitcoin", currency: "BTC", exhangeRate: 600000, idOrAddress: "b1zael1a4fasf366699", ownerOrNetwork: "Bitcoin Network", walletType: WalletType.CRYPTO, amount: 50 }
+    { icon: "assets/imgs/etherium.png", name: "Crypto_Eterium", currency: "ETH", exhangeRate: 60000, idOrAddress: "0xgadl1h4fase1211ff", ownerOrNetwork: "Eterium Network", walletType: WalletType.CRYPTO, amount: 200 },
+    { icon: "assets/imgs/bitcoin.png", name: "Crypto_Bitcoin", currency: "BTC", exhangeRate: 600000, idOrAddress: "b1zael1a4fasf366699", ownerOrNetwork: "Bitcoin Network", walletType: WalletType.CRYPTO, amount: 50 }
   ];
 
   constructor(private route: ActivatedRoute, private router: Router) {
