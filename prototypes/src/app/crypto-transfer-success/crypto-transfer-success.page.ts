@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GetLineText, GetTitle, Wallet } from 'src/models/wallet';
+import { GetLineText, GetTitle } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-transfer-success',
@@ -11,8 +11,8 @@ export class CryptoTransferSuccessPage implements OnInit {
 
   public title: string;
 
-  public sender: Wallet;
-  public reciever: Wallet;
+  public sender: any;
+  public reciever: any;
   public flow: string;
   public transaction:any;
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
-import { Wallet, GetLineText, GetTitle, ExangeRate } from 'src/models/Wallet';
+import { GetLineText, GetTitle, ExangeRateFromCurrency } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-transfer-exchange',
@@ -12,8 +12,8 @@ export class CryptoTransferExchangePage implements OnInit {
   public fg: FormGroup;
   public title: string;
 
-  public sender: Wallet;
-  public reciever: Wallet;
+  public sender: any;
+  public reciever: any;
   public flow: string;
 
   public lineText: any;
@@ -39,7 +39,7 @@ export class CryptoTransferExchangePage implements OnInit {
         this.lineText = GetLineText(this.reciever.walletType);
         this.title = GetTitle(this.flow);
 
-        this.exhangeLate = ExangeRate(this.sender.exhangeRate, this.reciever.exhangeRate);
+        this.exhangeLate = ExangeRateFromCurrency(this.sender.currency, this.reciever.currency);
 
         this.feeCurrentcy = this.sender.currency;
         if (this.sender.currency == "USDT") this.feeCurrentcy = "ETH"

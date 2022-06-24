@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios">
 
   <ion-list lines="none" *ngFor="let info of data" >
     <ion-list-header lines="none" mode="md">
@@ -19,11 +19,10 @@
           <b>{{item.name}}</b>
           <ion-text color="medium">
             <h3>
-              Mana Crypto {{item.currency}}
+              {{item.currency}}
             </h3>
           </ion-text>
         </ion-label>
-        <ion-note slot="end" color="danger">{{item.amount}} {{item.currency}}</ion-note>
       </ion-item>
     </ng-container>
     

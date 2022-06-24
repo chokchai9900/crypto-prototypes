@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { ExangeRate, Flow, Wallet, WalletType } from 'src/models/Wallet';
+import { ExangeRateFromCurrency, Flow, WalletType } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-withdraw-address',
@@ -9,7 +9,7 @@ import { ExangeRate, Flow, Wallet, WalletType } from 'src/models/Wallet';
   styleUrls: ['./crypto-withdraw-address.page.scss'],
 })
 export class CryptoWithdrawAddressPage implements OnInit {
-  public sender: Wallet;
+  public sender: any;
   private flow = Flow.WITHDRAW_ADRESS;
 
   public fg: FormGroup;
@@ -47,7 +47,7 @@ export class CryptoWithdrawAddressPage implements OnInit {
       convertRate = 60000;
     }
 
-    var exhangeLate = ExangeRate(this.sender.exhangeRate, convertRate);
+    var exhangeLate = ExangeRateFromCurrency(this.sender.currency, "THB");
     var converted = this.fg.get("amount").value * exhangeLate;
 
     this.fg.get("converted").setValue(converted);

@@ -48,14 +48,14 @@
           <ion-text color="medium">
             <h3>
               <ion-icon></ion-icon>
-              {{transaction.amount+transaction.fee}}
+              {{transaction.amount+transaction.fee+transaction.gas}}
               <small>{{sender.currency}}</small>
             </h3>
           </ion-text>
         </ion-label>
       </ion-item>
-<!-- ============================================================================== -->
-      <ion-item color="tertiary" class="ion-padding-vertical" lines="full">
+      <!-- ============================================================================== -->
+      <ion-item *ngIf="flow.split('_')[1]=='CRYPTo'" color="tertiary" class="ion-padding-vertical" lines="full">
         <ion-avatar slot="start" class="avatar-m">
           <img class="non-circle" src="assets/imgs/qrcode.png" />
         </ion-avatar>
@@ -76,8 +76,8 @@
           </ion-label>
         </ion-note>
       </ion-item>
-<!-- ============================================================================== -->
-      <ion-item color="tertiary" class="ion-padding-vertical" lines="full">
+      <!-- ============================================================================== -->
+      <ion-item *ngIf="flow.split('_')[1]=='CRYPTO'" color="tertiary" class="ion-padding-vertical" lines="full">
         <ion-label class="ion-text-center">
           <h2>
             <ion-text>กำลังดำเนินการโอน crypto ไปยังปลายทาง</ion-text>
@@ -87,30 +87,32 @@
           </h2>
         </ion-label>
       </ion-item>
-<!-- ============================================================================== -->
-      <ion-item class="ion-margin-top" lines="none" color="tertiary">
-        <ion-label for="customInputAmount">
-          <h2><b>เพิ่มเติม</b></h2>
-        </ion-label>
-      </ion-item>
-      <ion-item color="tertiary" class="ion-padding-bottom" lines="full">
-        <ion-grid class="ion-no-padding">
-
-          <ion-label for="customInputAmount">
-            <h2><b>{{lineText.line1}}</b>&nbsp;<ion-text color="medium">{{reciever.idOrAddress}}</ion-text>
-            </h2>
+      <!-- ============================================================================== -->
+      <div *ngIf="reciever.extraPrefix != null">
+        <ion-item lines="none" color="tertiary">
+          <ion-label>
+            <h2><b>เพิ่มเติม</b></h2>
           </ion-label>
+        </ion-item>
 
-          <ion-label for="customInputAmount">
-            <h2><b>{{lineText.line2}}</b>&nbsp;<ion-text color="medium">{{reciever.ownerOrNetwork}}</ion-text>
-            </h2>
-          </ion-label>
-
-        </ion-grid>
-      </ion-item>
+        <div class="item-bottom">
+          <slot name="error"></slot>
+          <slot name="helper"></slot>
+        </div>
+        <ion-item color="tertiary" lines="full">
+          <ion-grid class="ion-no-padding">
+            <ion-label class="ion-padding-bottom">
+              <h2 *ngFor="let item of reciever.extraPrefix ; let i = index">
+                <b>{{item}}</b>&nbsp;
+                <ion-text color="medium">{{reciever.extraText[i]}}</ion-text>
+              </h2>
+            </ion-label>
+          </ion-grid>
+        </ion-item>
+      </div>
 
       <ion-item color="tertiary" lines="none">
-        <ion-label for="customInputAmount">
+        <ion-label>
           <h2><b>หมายเหตุ</b></h2>
         </ion-label>
       </ion-item>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Flow, Method, Wallet, WalletType } from 'src/models/Wallet';
+import { Flow, Method, MockModel, WalletType } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-select-method',
@@ -9,19 +9,13 @@ import { Flow, Method, Wallet, WalletType } from 'src/models/Wallet';
 })
 export class CryptoSelectMethodPage implements OnInit {
 
-  public sender: Wallet;
+  public sender: any;
   public method: string;
   public prefix: string;
 
-  public manaWallets: Wallet[] = [
-    { icon: "assets/imgs/promtpayicon.png", name: "บัญชีของฉัน", currency: "THB", exhangeRate: 1, idOrAddress: "0944566698", ownerOrNetwork: "อานน บางสาน", walletType: WalletType.PROMPAY, amount: 3000 },
-    { icon: "assets/imgs/krungthai.png", name: "เงินเดือน", currency: "THB", exhangeRate: 1, idOrAddress: "4055236478", ownerOrNetwork: "อานน บางสาน", walletType: WalletType.BANK, amount: 2000 }
-  ];
-
-  public cryptoWallets: Wallet[] = [
-    { icon: "assets/imgs/etherium.png", name: "Crypto_Eterium", currency: "ETH", exhangeRate: 60000, idOrAddress: "0xgadl1h4fase1211ff", ownerOrNetwork: "Eterium Network", walletType: WalletType.CRYPTO, amount: 200 },
-    { icon: "assets/imgs/bitcoin.png", name: "Crypto_Bitcoin", currency: "BTC", exhangeRate: 600000, idOrAddress: "b1zael1a4fasf366699", ownerOrNetwork: "Bitcoin Network", walletType: WalletType.CRYPTO, amount: 50 }
-  ];
+  public manaWallets = MockModel.manaWallets;
+  public cryptoWallets = MockModel.cryptoWallets;
+  public bankWallets = MockModel.backWallets;
 
   constructor(private route: ActivatedRoute, private router: Router) {
     if (this.route.queryParams) {

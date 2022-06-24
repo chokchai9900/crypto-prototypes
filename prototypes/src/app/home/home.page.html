@@ -1,7 +1,7 @@
 <ion-content class="ion-padding" mode="ios">
 
   <ion-list class="ion-margin-bottom" lines="full">
-    <ion-list-header class="ion-padding">
+    <ion-list-header class="ion-padding" mode="md">
       <ion-label>Reference tools</ion-label>
     </ion-list-header>
 
@@ -19,7 +19,7 @@
   </ion-list>
 
   <ion-list class="ion-margin-bottom" lines="full" *ngFor="let info of data">
-    <ion-list-header class="ion-padding">
+    <ion-list-header class="ion-padding" mode="md">
       <ion-label>{{ info.title }}</ion-label>
     </ion-list-header>
 

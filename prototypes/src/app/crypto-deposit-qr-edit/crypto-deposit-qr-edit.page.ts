@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Flow, Wallet, WalletType } from 'src/models/Wallet';
+import { Flow, WalletType } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-deposit-qr-edit',
@@ -10,7 +10,7 @@ import { Flow, Wallet, WalletType } from 'src/models/Wallet';
 })
 export class CryptoDepositQrEditPage implements OnInit {
 
-  public reciever :Wallet;
+  public reciever :any;
   private flow = Flow.DEPOSITE_QR;
   public fg: FormGroup;
   public address: string;

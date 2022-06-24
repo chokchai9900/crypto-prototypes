@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/quotes */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Wallet } from 'src/models/Wallet';
 
 @Component({
   selector: 'app-crypto-wallet-detail',
@@ -11,7 +10,7 @@ import { Wallet } from 'src/models/Wallet';
 })
 export class CryptoWalletDetailPage implements OnInit {
   public data: any[] = [];
-  public wallet : Wallet;
+  public wallet : any;
   public templates: ListInfo[] = [
     new ListInfo("เติมเงิน", "success", "", "assets/imgs/transaction-deposit.png"),
     new ListInfo("ถอนเงิน", "danger", "", "assets/imgs/transaction-withdraw.png"),

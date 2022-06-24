@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AnyForUntypedForms } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Flow, GetLineText, GetTitle, Wallet } from 'src/models/wallet';
+import { Flow, GetLineText, GetTitle } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-transfer-confirm',
@@ -11,11 +12,9 @@ export class CryptoTransferConfirmPage implements OnInit {
 
   public title: string;
 
-  public sender: Wallet;
-  public reciever: Wallet;
+  public sender: any;
+  public reciever: any;
   public flow: string;
-
-  public lineText: any;
   public transaction: any;
 
   constructor(private route: ActivatedRoute, private router: Router) {
@@ -24,11 +23,8 @@ export class CryptoTransferConfirmPage implements OnInit {
         this.sender = JSON.parse(params["sender"]);
         this.reciever = JSON.parse(params["reciever"]);
         this.transaction = JSON.parse(params["transaction"]);
-        console.log(JSON.stringify(this.transaction));
-
         this.flow = params["flow"];
 
-        this.lineText = GetLineText(this.reciever.walletType);
         this.title = GetTitle(this.flow);
       });
     }

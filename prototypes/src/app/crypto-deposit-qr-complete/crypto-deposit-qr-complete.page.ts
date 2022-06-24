@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GetLineText, GetTitle, Wallet } from 'src/models/Wallet';
+import { GetLineText, GetTitle } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-deposit-qr-complete',
@@ -11,8 +11,8 @@ export class CryptoDepositQrCompletePage implements OnInit {
 
   public title: string;
 
-  public sender: Wallet;
-  public reciever: Wallet;
+  public sender: any;
+  public reciever: any;
   public flow: string;
   public networkSelected: string;
   public address: string;

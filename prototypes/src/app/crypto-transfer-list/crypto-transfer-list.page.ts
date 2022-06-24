@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { Flow, GetTitle, Method, Wallet, WalletType } from 'src/models/Wallet';
+import { Flow, GetTitle, Method, WalletType } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-transfer-list',
@@ -10,8 +10,8 @@ import { Flow, GetTitle, Method, Wallet, WalletType } from 'src/models/Wallet';
 export class CryptoTransferListPage implements OnInit {
   public title: string;
 
-  public wallets: Wallet[];
-  private sender: Wallet;
+  public wallets: any[];
+  private sender: any;
   private flow: string;
 
 
@@ -33,8 +33,8 @@ export class CryptoTransferListPage implements OnInit {
   public goNext(account: any) {
     var method = this.flow.split("_")[0];
 
-    var sender: Wallet;
-    var reciever: Wallet;
+    var sender: any;
+    var reciever: any;
 
     if (method == Method.WITHDRAW) {
       sender = this.sender;
