@@ -48,14 +48,14 @@
           <ion-text color="medium">
             <h3>
               <ion-icon></ion-icon>
-              {{transaction.amount+transaction.fee+transaction.gas}}
+              {{transaction.amount+transaction.fee}}
               <small>{{sender.currency}}</small>
             </h3>
           </ion-text>
         </ion-label>
       </ion-item>
-      <!-- ============================================================================== -->
-      <ion-item *ngIf="flow.split('_')[1]=='CRYPTo'" color="tertiary" class="ion-padding-vertical" lines="full">
+<!-- ============================================================================== -->
+      <ion-item color="tertiary" class="ion-padding-vertical" lines="full">
         <ion-avatar slot="start" class="avatar-m">
           <img class="non-circle" src="assets/imgs/qrcode.png" />
         </ion-avatar>
@@ -76,8 +76,8 @@
           </ion-label>
         </ion-note>
       </ion-item>
-      <!-- ============================================================================== -->
-      <ion-item *ngIf="flow.split('_')[1]=='CRYPTO'" color="tertiary" class="ion-padding-vertical" lines="full">
+<!-- ============================================================================== -->
+      <ion-item color="tertiary" class="ion-padding-vertical" lines="full">
         <ion-label class="ion-text-center">
           <h2>
             <ion-text>กำลังดำเนินการโอน crypto ไปยังปลายทาง</ion-text>
@@ -87,32 +87,77 @@
           </h2>
         </ion-label>
       </ion-item>
-      <!-- ============================================================================== -->
-      <div *ngIf="reciever.extraPrefix != null">
-        <ion-item lines="none" color="tertiary">
-          <ion-label>
-            <h2><b>เพิ่มเติม</b></h2>
-          </ion-label>
-        </ion-item>
+<!-- ============================================================================== -->
+<!--
+<ion-item class="ion-no-padding ion-text-justify" color="tertiary" lines="none">
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-label>
+          <h2 class="line-height2"><b></b></h2>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-label>
+          <h2 class="line-height2"><b>Address</b></h2>
+        </ion-label>
+        <ion-label>
+          <h3>{{reciever.idOrAddress}}</h3>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-label>
+          <h2 class="line-height2"><b>Network</b></h2>
+        </ion-label>
+        <ion-label>
+          <h3>{{reciever.ownerOrNetwork}}</h3>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-label>
+          <h2 class="line-height2"><b>Tx ID</b></h2>
+        </ion-label>
+        <ion-label>
+          <h3>0x9cf4504599ccb364373951f8b0e1af8c207fb9c76ded717641e4ea1140e385e0</h3>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-item>-->
 
-        <div class="item-bottom">
-          <slot name="error"></slot>
-          <slot name="helper"></slot>
-        </div>
-        <ion-item color="tertiary" lines="full">
-          <ion-grid class="ion-no-padding">
-            <ion-label class="ion-padding-bottom">
-              <h2 *ngFor="let item of reciever.extraPrefix ; let i = index">
-                <b>{{item}}</b>&nbsp;
-                <ion-text color="medium">{{reciever.extraText[i]}}</ion-text>
-              </h2>
-            </ion-label>
-          </ion-grid>
-        </ion-item>
-      </div>
+<!-- =================================From original================================ -->
+
+<ion-item class="ion-margin-top" lines="none" color="tertiary">
+  <ion-label for="customInputAmount">
+    <h2><b>Information</b></h2>
+  </ion-label>
+</ion-item>
+<ion-item class="ion-margin-bottom ion-text-wrap" lines="full" color="tertiary">
+  <ion-grid class="ion-no-padding">
+
+    <ion-label>
+      <h2><b>Address</b>&nbsp;<ion-text color="medium">{{reciever.idOrAddress}}</ion-text></h2>
+    </ion-label>
+    <ion-label>
+      <h2><b>Network</b>&nbsp;<ion-text color="medium">{{reciever.ownerOrNetwork}}</ion-text></h2>
+    </ion-label>
+    <ion-label>
+      <h2><b>TxID</b>&nbsp;<ion-text color="medium">0x9cf4504599ccb364373951f8b0e1af8c207fb9c76ded717641e4ea1140e385e0</ion-text></h2>
+    </ion-label>
+
+  </ion-grid>
+</ion-item>
+
+<!-- ============================================================================== -->
 
       <ion-item color="tertiary" lines="none">
-        <ion-label>
+        <ion-label for="customInputAmount">
           <h2><b>หมายเหตุ</b></h2>
         </ion-label>
       </ion-item>
