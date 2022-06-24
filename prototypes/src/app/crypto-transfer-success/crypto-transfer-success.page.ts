@@ -31,7 +31,7 @@ export class CryptoTransferSuccessPage implements OnInit {
         this.title = GetTitle(this.flow);
 
         this.totalPay = this.transaction.amount + this.transaction.fee;
-        if (this.sender.currency == 'USDT') this.totalPay += this.transaction.gas.amount;
+        if (this.transaction.gas != null) this.totalPay += this.transaction.gas.amount;
       });
     }
   }

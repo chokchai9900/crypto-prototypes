@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
-import { GetLineText, GetTitle, ExangeRateFromCurrency } from 'src/services/wallet.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { ExangeRateFromCurrency, GetGasRate, GetTitle } from 'src/services/wallet.service';
 
 @Component({
-  selector: 'app-crypto-transfer-exchange',
-  templateUrl: './crypto-transfer-exchange.page.html',
-  styleUrls: ['./crypto-transfer-exchange.page.scss'],
+  selector: 'app-crypto-transfer-edit-one',
+  templateUrl: './crypto-transfer-edit-one.page.html',
+  styleUrls: ['./crypto-transfer-edit-one.page.scss'],
 })
-export class CryptoTransferExchangePage implements OnInit {
+export class CryptoTransferEditOnePage implements OnInit {
   public fg: FormGroup;
   public title: string;
 
@@ -21,12 +21,13 @@ export class CryptoTransferExchangePage implements OnInit {
   public exhangeLate: number;
   public converted: number = 0;
   public fee: number = 0.5;
-  public feeCurrency: string;
-
+  public gas:any;
+  
   constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
     this.fg = this.fb.group({
       'amount': [null],
       'converted': [null],
+      'gas': [null],
       'fee': [null]
     });
 
@@ -35,14 +36,14 @@ export class CryptoTransferExchangePage implements OnInit {
         this.sender = JSON.parse(params["sender"]);
         this.reciever = JSON.parse(params["reciever"]);
         this.flow = params["flow"];
-
-        this.lineText = GetLineText(this.reciever.walletType);
         this.title = GetTitle(this.flow);
 
         this.exhangeLate = ExangeRateFromCurrency(this.sender.currency, this.reciever.currency);
+        
 
-        this.feeCurrency = this.sender.currency;
-        if (this.sender.currency == "USDT") this.feeCurrency = "ETH"
+        if (this.sender.walletType == "CRYPTO") {
+          this.gas = GetGasRate(this.sender.currency);
+        }
       });
     }
   }
@@ -58,8 +59,9 @@ export class CryptoTransferExchangePage implements OnInit {
   public goNext() {
     this.fg.get("converted").setValue(this.converted);
     this.fg.get("fee").setValue(this.fee);
+    this.fg.get("gas").setValue(this.gas);
     let param: NavigationExtras = { queryParams: { flow: this.flow, sender: JSON.stringify(this.sender), reciever: JSON.stringify(this.reciever), transaction: JSON.stringify(this.fg.value) } };
-    this.router.navigate(['/crypto-transfer-confirm'], param);
+    this.router.navigate(['/crypto-transfer-edit-two'], param);
   }
 
 }

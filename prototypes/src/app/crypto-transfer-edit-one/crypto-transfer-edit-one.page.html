@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios" class="ion-padding-top">
+  <form [formGroup]="fg">
+    <ion-card color="tertiary">
+      <ion-card-content class="ion-no-padding">
+        <div class="ion-text-center ion-padding-top">
+          <ion-avatar slot="start" class="avatar-l center ion-margin-bottom">
+            <img [src]="reciever.icon">
+          </ion-avatar>
+          <ion-label class="ion-text-center">
+            <h2><b>{{reciever.name}}</b></h2>
+          </ion-label>
+        </div>
+
+        <ion-list class="ion-margin-top" lines="full">
+          <ion-item color="tertiary" lines="none">
+
+            <ion-label slot="start">
+              <h2>จำนวนเงิน</h2>
+            </ion-label>
+            <ion-label slot="end">
+              <img slot="end" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
+            </ion-label>
+
+          </ion-item>
+
+          <ion-item color="tertiary">
+            <ion-input type="number" customInput="true" placeholder="ระบุยอดเงิน" class="ion-text-center input-money"
+              formControlName="amount" (ionChange)="onChangeAmount($event)">
+            </ion-input>
+            <ion-label slot="end" class="ion-no-margin">
+              <h2><small>{{sender.currency}}</small></h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list class="ion-margin-top" lines="full">
+      <div *ngIf="reciever.extraPrefix != null">
+        <ion-item class="ion-no-padding" color="tertiary" lines="full">
+          <ion-label class="ion-padding-start">
+            <h3><b>เพิ่มเติม</b></h3>
+            <h3 *ngFor="let item of reciever.extraPrefix ; let i = index">
+              <b>{{item}}</b>&nbsp;
+              <ion-text color="medium">{{reciever.extraText[i]}}</ion-text>
+            </h3>
+          </ion-label>
+        </ion-item>
+      </div>
+
+      <ion-item class="ion-no-padding" color="tertiary" lines="none">
+        <ion-label class="ion-padding-start">
+          <h3><b>หมายเหตุ</b></h3>
+          <h3>
+            <ion-text color="medium">มีหยังก็ใส่มาหมายเหตุในฝัน</ion-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+  </form>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <form>
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" (click)="goNext()">ตกลง
+    </ion-button>
+  </form>
+</ion-footer>

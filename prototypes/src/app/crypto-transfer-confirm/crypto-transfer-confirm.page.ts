@@ -31,7 +31,7 @@ export class CryptoTransferConfirmPage implements OnInit {
         this.title = GetTitle(this.flow);
 
         this.totalPay = this.transaction.amount + this.transaction.fee;
-        if (this.sender.currency == 'USDT') this.totalPay += this.transaction.gas.amount;
+        if (this.transaction.gas != null) this.totalPay += this.transaction.gas.amount;
 
         if (this.transaction.gas != null && this.transaction.gas.currency == "BTC") this.GasWallet = MockModel.cryptoWallets[1];
         if (this.transaction.gas != null && this.transaction.gas.currency == "ETH") this.GasWallet = MockModel.cryptoWallets[0];

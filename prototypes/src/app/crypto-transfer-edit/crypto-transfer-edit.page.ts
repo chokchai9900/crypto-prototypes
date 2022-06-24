@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { ExangeRateFromCurrency as ExangeRateFromNetwork, GetGasRate, GetLineText, GetTitle, MockModel } from 'src/services/wallet.service';
+import { ExangeRateFromCurrency, GetGasRate, GetTitle, MockModel } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-transfer-edit',
@@ -41,7 +41,7 @@ export class CryptoTransferEditPage implements OnInit {
         this.flow = params["flow"];
         this.title = GetTitle(this.flow);
 
-        this.exhangeLate = ExangeRateFromNetwork(this.sender.currency, this.reciever.currency);
+        this.exhangeLate = ExangeRateFromCurrency(this.sender.currency, this.reciever.currency);
         
 
         if (this.sender.walletType == "CRYPTO") {

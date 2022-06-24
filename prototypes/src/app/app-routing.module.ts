@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'crypto-wallet',
+    redirectTo: 'crypto-home',
     pathMatch: 'full'
   },
   {
@@ -100,7 +100,7 @@ const routes: Routes = [
     loadChildren: () => import('./crypto-main/crypto-main.module').then( m => m.CryptoMainPageModule)
   },
   {
-    path: 'crypto-wallet',
+    path: 'crypto-wallet/:demoNo',
     loadChildren: () => import('./crypto-wallet/crypto-wallet.module').then( m => m.CryptoWalletPageModule)
   },
   {
@@ -154,13 +154,18 @@ const routes: Routes = [
   {
     path: 'underconstruction',
     loadChildren: () => import('./underconstruction/underconstruction.module').then( m => m.UnderconstructionPageModule)
-  },  {
-    path: 'crypto-transfer-exchange',
-    loadChildren: () => import('./crypto-transfer-exchange/crypto-transfer-exchange.module').then( m => m.CryptoTransferExchangePageModule)
   },
-
-
-
+  {
+    path: 'crypto-transfer-edit-one',
+    loadChildren: () => import('./crypto-transfer-edit-one/crypto-transfer-edit-one.module').then( m => m.CryptoTransferEditOnePageModule)
+  },
+  {
+    path: 'crypto-home',
+    loadChildren: () => import('./crypto-home/crypto-home.module').then( m => m.CryptoHomePageModule)
+  },  {
+    path: 'crypto-transfer-edit-two',
+    loadChildren: () => import('./crypto-transfer-edit-two/crypto-transfer-edit-two.module').then( m => m.CryptoTransferEditTwoPageModule)
+  },
 
 
 ];
