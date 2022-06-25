@@ -166,6 +166,10 @@ const routes: Routes = [
     path: 'crypto-transfer-edit-two',
     loadChildren: () => import('./crypto-transfer-edit-two/crypto-transfer-edit-two.module').then( m => m.CryptoTransferEditTwoPageModule)
   },
+  {
+    path: 'note',
+    loadChildren: () => import('./note/note.module').then( m => m.NotePageModule)
+  },
 
 
 ];

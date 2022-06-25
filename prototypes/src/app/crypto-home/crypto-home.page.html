@@ -4,8 +4,8 @@
       <ion-label>{{ info.title }}</ion-label>
     </ion-list-header>
 
-     <ng-container *ngFor="let item of info.data">
-      <a *ngIf="item.link" target="_blank" [routerLink]="item.link">
+    <ng-container *ngFor="let item of info.data">
+      <a *ngIf="item.link" [routerLink]="item.link">
         <ion-item color="tertiary" button [ngClass]="{'indent': item.isSub}">
           <ion-label>
             {{ item.title }}
@@ -23,8 +23,24 @@
           </p>
         </ion-label>
       </ion-item>
+
     </ng-container>
-    
+    <br>
+    <br>
+    <br>
+    <a routerLink="/note/">
+      <ion-item color="tertiary" button>
+        <ion-label>
+          README
+          <p>
+            <ion-text color="medium">อ่านได้ก็ดี ถ้าไม่อ่านให้มาถามคนทำนะครับ</ion-text>
+          </p>
+          <p>
+            <ion-text color="medium">ชื่อคนทำอยู่ใน README</ion-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </a>
   </ion-list>
 
 </ion-content>

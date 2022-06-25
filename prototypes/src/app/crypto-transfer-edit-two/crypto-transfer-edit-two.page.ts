@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { ExangeRateFromCurrency, GetGasRate, GetTitle } from 'src/services/wallet.service';
+import { ExangeRateFromCurrency, GetGasRate, GetTitle, MockModel } from 'src/services/wallet.service';
 
 @Component({
   selector: 'app-crypto-transfer-edit-two',
@@ -17,6 +17,7 @@ export class CryptoTransferEditTwoPage implements OnInit{
   public lineText: any;
 
   public transaction:any;
+  public GasWallet:any = MockModel.cryptoWallets[0];
   
   constructor(private route: ActivatedRoute, private router: Router) {
 

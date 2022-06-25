@@ -20,11 +20,15 @@
           <ion-col size="6" class="ion-text-center ion-no-padding">
             <ion-label class="ion-text-nowrap">
               <h3><b> {{sender.name}}</b></h3>
+              <h3>
+                <ion-text color="medium">{{sender.subname}}</ion-text>
+              </h3>
             </ion-label>
           </ion-col>
           <ion-col size="6" class="ion-text-center ion-no-padding">
             <ion-label class="ion-text-nowrap">
               <h3><b> {{reciever.name}}</b></h3>
+              <h3>  <ion-text color="medium">{{reciever.subname}}</ion-text></h3>
             </ion-label>
           </ion-col>
         </ion-row>
@@ -146,12 +150,12 @@
               <ion-text color="medium">{{reciever.extraText[i]}}</ion-text>
             </h3>
             <h3 *ngIf="flow.split('_')[1]=='CRYPTO'"><b>TxID</b>&nbsp;<ion-text color="medium">
-              0x9cf4504599ccb364373951f8b0e1af8c207fb9c76ded717641e4ea1140e385e0</ion-text>
-          </h3>
-          <h3 *ngIf="flow.split('_')[1]=='CRYPTO'"><b>Link</b>&nbsp;<ion-text color="medium">
-              <a>link trasaction</a>
-            </ion-text>
-          </h3>
+                0x9cf4504599ccb364373951f8b0e1af8c207fb9c76ded717641e4ea1140e385e0</ion-text>
+            </h3>
+            <h3 *ngIf="flow.split('_')[1]=='CRYPTO'"><b>Link</b>&nbsp;<ion-text color="medium">
+                <a>link trasaction</a>
+              </ion-text>
+            </h3>
           </ion-label>
         </ion-item>
       </div>
@@ -165,7 +169,7 @@
         </ion-label>
       </ion-item>
     </ion-list>
-    <br/>
+    <br />
   </ion-card>
   <div size="12" class="indentation">
   </div>

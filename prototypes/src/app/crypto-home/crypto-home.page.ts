@@ -10,13 +10,11 @@ export class CryptoHomePage implements OnInit {
   public data: any[] = [];
 
   public templates: ListInfo[] = [
-    new ListInfo("รูปแบบกรอกจำนวนและ convert ในหน้าเดียว", "/crypto-wallet/1"),
-    new ListInfo(" รูปแบบกรอกจำนวนและ convert คนละหน้า", "/crypto-wallet/2"),
+    new ListInfo("(1) รูปแบบกรอกจำนวนและ convert ในหน้าเดียว", "/crypto-wallet/1"),
+    new ListInfo("(2) รูปแบบกรอกจำนวนและ convert คนละหน้า", "/crypto-wallet/2"),
   ];
 
-  constructor() { 
-    (<any>window).flow = 1;
-  }
+  constructor() { }
 
   ngOnInit() {
     this.data = [
