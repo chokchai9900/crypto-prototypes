@@ -10,8 +10,8 @@ export class CryptoHomePage implements OnInit {
   public data: any[] = [];
 
   public templates: ListInfo[] = [
-    new ListInfo("(1) รวมหน้า", "/crypto-wallet/1"),
-    new ListInfo("(2) แยกหน้า", "/crypto-wallet/2"),
+    new ListInfo("(1) รวมหน้ากรอกกับ convert", "/crypto-wallet/1"),
+    new ListInfo("(2) แยกหน้าตาม standard", "/crypto-wallet/2"),
   ];
 
   constructor() { }
