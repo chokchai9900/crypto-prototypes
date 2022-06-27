@@ -36,5 +36,8 @@ export class CryptoDepositQrCompletePage implements OnInit {
 
   ngOnInit() {
   }
-
+  public goHome()
+  {
+    this.router.navigate(['/']);
+  }
 }

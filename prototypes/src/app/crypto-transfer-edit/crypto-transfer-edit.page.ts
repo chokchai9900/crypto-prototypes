@@ -43,8 +43,7 @@ export class CryptoTransferEditPage implements OnInit {
 
         this.exhangeLate = ExangeRateFromCurrency(this.sender.currency, this.reciever.currency);
         
-
-        if (this.sender.walletType == "CRYPTO") {
+        if (this.sender.walletType == "CRYPTO" && this.sender.currency == "USDT") {
           this.gas = GetGasRate(this.sender.currency);
         }
       });

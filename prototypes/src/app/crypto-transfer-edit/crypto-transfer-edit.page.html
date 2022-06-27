@@ -26,7 +26,7 @@
         </ion-col>
       </ion-item>
 
-      <ion-item *ngIf="sender.currency == 'USDT'" color="tertiary" lines="none" button>
+      <ion-item *ngIf="gas != null" color="tertiary" lines="none" button>
         <img slot="start" width="22" height="22" class="qr" [src]="GasWallet.icon" />
         <ion-col class="ion-no-padding">
           <ion-label color="medium">
